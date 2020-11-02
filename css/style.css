@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin: 10px;
+}
+
+.signin-btn {
+  margin-left: auto;
+}
