@@ -17,11 +17,23 @@
 
 .user {
   margin-left: auto;
-  color: green;
+  color: #49afa5;
+  border: #49afa5 1px solid;
+  font-size: large;
+  font-weight: bolder;
+  padding: 6px 8px;
+  border-radius: 5%;
 }
 
 .login-window {
   position: absolute;
   top: 70px;
   right: 30px;
+}
+
+
+.quiz {
+  margin-left: auto;
+  margin-right: auto;
+
 }
