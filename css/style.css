@@ -14,3 +14,14 @@
 .signin-btn {
   margin-left: auto;
 }
+
+.user {
+  margin-left: auto;
+  color: green;
+}
+
+.login-window {
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}

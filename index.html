@@ -22,14 +22,15 @@
       <a href="#" class="logo">
         <img src="img/logo.svg" alt="logo" class="logo-img">
       </a>
-      <button class="signin-btn btn btn-small brown">
+      <button class="signin-btn btn btn-small brown hide">
         Войти
       </button>
+      <span class="user">Карим Сабитов - ПКС-15</span>
     </div>
   </header>
   <main>
     <div class="row container">
-      <h3 class="center">Выберите тесты из списка предложенных</h2>
+      <h3 class="center">Выберите тест</h2>
         <div class="divider"></div>
         <!-- Тесты -->
         <div class="col s12 m6">
@@ -83,6 +84,23 @@
 
     </div>
   </main>
+
+  <div class="login-window card-panel">
+    <form class="login-window__form">
+      <div class="login-window__input-item">
+        <label for="login-window__input-name">Введите имя</label>
+        <input type="text" id="login-window__input-name">
+      </div>
+      <div class="login-window__input-item">
+        <label for="login-window__input-group">Введите группу</label>
+        <div>
+          <input type="text" id="login-window__input-group">
+          <button type="submit" class="login-window__btn-submit btn btn-flat waves-effect waves-brown">Войти</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
 </body>
 
 </html>
