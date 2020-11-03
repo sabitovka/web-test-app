@@ -1,1 +1,3 @@
-console.log(123);
+import generateHeader from "./header.js"
+
+generateHeader();
