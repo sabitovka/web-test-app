@@ -8,6 +8,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -16,9 +17,16 @@
       ]
     },
     {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -30,6 +38,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -43,6 +52,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -63,6 +73,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -74,6 +103,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -85,6 +115,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -98,6 +129,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -117,6 +149,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -128,6 +179,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -139,6 +191,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -152,6 +205,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -171,6 +225,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -182,6 +255,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "https://loremflickr.com/640/360",
       "variants": [
         "true",	
         "false",
@@ -193,6 +267,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -206,6 +281,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -225,6 +301,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -236,6 +331,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -247,6 +343,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -260,6 +357,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -279,6 +377,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -290,6 +407,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -301,6 +419,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -314,6 +433,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -333,6 +453,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -344,6 +483,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -355,6 +495,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -368,6 +509,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -387,6 +529,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -398,6 +559,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -409,6 +571,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -422,6 +585,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -441,6 +605,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -452,6 +635,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -463,6 +647,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -476,6 +661,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -495,6 +681,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -506,6 +711,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -517,6 +723,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -530,6 +737,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -549,6 +757,25 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
+      "variants": [
+        "Мотоцикл",
+        "Остров",
+        "Язык программирования",
+        "Чай"
+      ]
+    },
+    {
+      "title": "Введите правильный вариант",
+      "type": "text",
+      "right": "hello",
+      "img": ""
+    },
+    {
+      "title": "Начнём с простого: что такое Java?",
+      "type": "singleChoise",
+      "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -560,6 +787,7 @@
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "true",	
         "false",
@@ -571,6 +799,7 @@
       "title": "Начнём с простого: что такое Java?",
       "type": "multiChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "int[] array = new int[];",
       	"int[] array = int[];",	
@@ -584,6 +813,7 @@
       "title": "Что будет, если скомпилировать и запустить этот код?",
       "type": "singleChoise",
       "right": 3,
+      "img": "",
       "variants": [
         "Мотоцикл",
         "Остров",
