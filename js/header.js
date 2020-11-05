@@ -1,3 +1,5 @@
+import { isAutorized, handleAutorizeWindow, handleUserWindow } from './autorization.js';
+
 const generateHeader = () => {
   const headerHTML = `
     <header class="brown lighten-4">
@@ -5,51 +7,50 @@ const generateHeader = () => {
         <a href="index.html" class="logo">
           <img src="img/logo.svg" alt="logo" class="logo-img">
         </a>
-        <button class="signin-btn btn btn-small brown">
+        ${
+          !isAutorized() ? 
+        `<button class="signin-btn btn btn-small brown">
           Войти
-        </button>
-        <span class="user hide">Карим Сабитов - ПКС-15</span>
+        </button>` :
+        `<span class="user"></span>`
+        }
       </div>
     </header>
   `
 
   document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
-  checkAutorize();
+  if (!isAutorized()) {
+    createLoginWindow();
+    handleAutorizeWindow();
+  } else {
+    handleUserWindow();
+  }
 }
 
-const checkAutorize = () => {
-  const autorized = true;
-  if (autorized) {
-    const signinBtn = document.querySelector('.signin-btn');
+const createLoginWindow = () => {
+  const signinBtn = document.querySelector('.signin-btn');
 
-    const loginCardHTML = `
-      <form class="login-window__form" action=".">
-        <div class="login-window__input-item">
-          <label for="login-window__input-name">Введите имя</label>
-          <input type="text" id="login-window__input-name">
+  const loginCardHTML = `
+  <div class="login-window card-panel hide">
+    <form class="login-window__form" action="/">
+      <div class="login-window__input-item">
+        <label for="login-window__input-name">Введите имя</label>
+        <input type="text" id="login-window__input-name">
+      </div>
+      <div class="login-window__input-item">
+        <label for="login-window__input-group">Введите группу</label>
+        <div>
+          <input type="text" id="login-window__input-group" class="inline">
+          <button type="submit" class="login-window__btn-submit btn btn-flat waves-effect waves-brown">Войти</button>
         </div>
-        <div class="login-window__input-item">
-          <label for="login-window__input-group">Введите группу</label>
-          <div>
-            <input type="text" id="login-window__input-group inline">
-            <button type="submit" class="login-window__btn-submit btn btn-flat waves-effect waves-brown">Войти</button>
-          </div>
-        </div>
-      </form> 
-    `
+      </div>
+    </form> 
+  </div>
+  <div class="overlay hide"/>
+  `
 
-    const loginWindow = document.createElement('div');
-    loginWindow.classList.add('login-window', 'card-panel', 'hide');
-    loginWindow.innerHTML = loginCardHTML;
-
-    document.body.insertAdjacentElement('beforeend', loginWindow);
-
-    signinBtn.addEventListener('click', () => {
-      loginWindow.classList.toggle('hide')
-    })
-
-  }
+  document.body.insertAdjacentHTML('beforeend', loginCardHTML);
 }
 
 export default generateHeader;
