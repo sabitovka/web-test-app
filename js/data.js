@@ -11,6 +11,12 @@ const getData = {
     this.get(data => {
       callback(data);
     });
+  },
+  quiz(id, callback) {
+    this.get(data => {
+      const result = data.find(item => item.id === id);
+      callback(result);
+    })
   }
 }
 
