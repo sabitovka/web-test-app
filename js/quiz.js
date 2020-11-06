@@ -3,18 +3,27 @@ import getData from './data.js';
 
 const generateQuiz = () => {
 
-
   const handleQuiz = ({ title, questions }) => {
 
     const quizTitle = document.querySelector('.quiz-title');
     const nextBtn = document.querySelector('.next-btn');
+    const nextBtnLink = document.querySelector('.next-btn-link');
 
     let currentQuestion = 0;
 
     quizTitle.textContent = title;
     renderQuestion(questions[1]);
 
-    nextBtn.addEventListener('click', () => renderQuestion(questions[currentQuestion++]))
+    nextBtn.addEventListener('click', () => {
+      if (currentQuestion >= questions.length) {
+        nextBtnLink.setAttribute('href', 'result.html')
+        return
+      }
+      renderQuestion(questions[currentQuestion++])
+      if (currentQuestion >= questions.length) {
+        nextBtn.textContent = 'Завершить';
+      }
+    })
   }
 
   const renderQuestion = ({ title, img, type, variants }) => {    
