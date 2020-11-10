@@ -1,6 +1,7 @@
 import { handleAutorizeWindow, handleUserWindow } from './autorization.js';
 import User from './userData.js';
 
+// создаем header
 const generateHeader = () => {
   const headerHTML = `
     <header class="brown lighten-4">
@@ -21,17 +22,18 @@ const generateHeader = () => {
 
   document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
+  // если пользователь не авторизован - создать окно входа
   if (!User.isAutorized()) {
     createLoginWindow();
     handleAutorizeWindow();
   } else {
+    // иначе сделать его карточку
     handleUserWindow();
   }
 }
 
+// создаем окно входа
 const createLoginWindow = () => {
-  const signinBtn = document.querySelector('.signin-btn');
-
   const loginCardHTML = `
   <div class="login-window card-panel hide">
     <form class="login-window__form" action="/">

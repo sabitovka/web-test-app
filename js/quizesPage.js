@@ -4,6 +4,7 @@ const generateQuizesPage = () => {
 
   const quizes = document.querySelector('.quizes');
 
+  // генерация карточек с тестами
   const generateCard = (data) => {
     quizes.textContent = '';
 
@@ -29,7 +30,7 @@ const generateQuizesPage = () => {
     quizes.insertAdjacentHTML('afterbegin', contentHTML);
   }
 
-
+  // если мы назодимя на глвной странице - отображаем список тестов
   if (location.pathname.startsWith('/index') || location.pathname === '/') {
     getData.quizesList(generateCard);
   }
