@@ -1,7 +1,29 @@
 import cookieParser from './cookie.js'
 
-export const isAutorized = () => cookieParser.getCookie('name') &&
-  cookieParser.getCookie('group');
+export const User = {
+  nameData: cookieParser.getCookie('name'),
+  groupData: cookieParser.getCookie('group'),
+
+  get name() { return this.nameData },
+  get group() { return this.groupData }, 
+
+  set name(title) {
+    cookieParser.setCookie("name", title);
+    this.nameData = title;
+  },
+
+  set group(title) {
+    cookieParser.setCookie("group", title);
+    this.groupData = title;
+  },
+
+  toString() {
+    return this.name + " - " + this.group;
+  },
+  isAutorized() { 
+    return this.name && this.group;
+  }
+} 
 
 export const handleAutorizeWindow = () => {
   const loginWindow = document.querySelector(".login-window");
@@ -26,9 +48,8 @@ export const handleAutorizeWindow = () => {
     event.preventDefault();
     let name = inputName.value;
     let group = inputGroup.value;
-    cookieParser.setCookie("name", name);
-    cookieParser.setCookie("group", group);
-    console.log(name, group);
+    User.name = name;
+    User.group = group;
     closeSignInWindow();
     location.reload();
   }
@@ -39,9 +60,5 @@ export const handleAutorizeWindow = () => {
 }
 
 export const handleUserWindow = () => {
-  const userName = cookieParser.getCookie('name');
-  const group = cookieParser.getCookie('group');
-
-  const userSpan = document.querySelector('.user');
-  userSpan.textContent = userName + ' - ' + group;
+  document.querySelector('.user').textContent = User.toString();
 }

@@ -1,4 +1,4 @@
-import { isAutorized, handleAutorizeWindow, handleUserWindow } from './autorization.js';
+import { User, handleAutorizeWindow, handleUserWindow } from './autorization.js';
 
 const generateHeader = () => {
   const headerHTML = `
@@ -8,7 +8,7 @@ const generateHeader = () => {
           <img src="img/logo.svg" alt="logo" class="logo-img">
         </a>
         ${
-          !isAutorized() ? 
+          !User.isAutorized() ? 
         `<button class="signin-btn btn btn-small brown">
           Войти
         </button>` :
@@ -20,7 +20,7 @@ const generateHeader = () => {
 
   document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
-  if (!isAutorized()) {
+  if (!User.isAutorized()) {
     createLoginWindow();
     handleAutorizeWindow();
   } else {
