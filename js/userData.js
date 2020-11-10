@@ -46,12 +46,12 @@ const User = {
       item.group === this.group);
     if (obj) {
       // если объект есть - переписываем результат
+      obj.resultMask = res.resultMask;
       obj.results = res.results;
     } else {
       // иначе просто добавляем
       allRes.push(res);
     }
-
     // записыаем в localstorage
     setLocalStorage('results', allRes);
   }

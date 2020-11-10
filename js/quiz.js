@@ -38,14 +38,11 @@ const generateQuiz = () => {
         .forEach(item => {
           if (!isMulti) {
             // присваиваем результату
-            console.log( typeof(item.value) );
-            console.log(item.value instanceof String);
-            result =  +item.value; 
-            console.log(result);
+            result = !Number(item.value) ? item.value : Number(item.value); 
           }
           else {
             // пшим в массив
-            result.push(item.value);
+            result.push(Number(item.value));
           }
         });
       // сохраняем в массив результатов в объекте
@@ -56,17 +53,16 @@ const generateQuiz = () => {
     const checkAnswers = () => {
       // индекс текущего элемента
       let curr = 0;
-      console.log(questions.map(item => item.right));
-      console.log(userAnswers.results);
       // делаем новый массив - маску ответов. Пример: [true, true, false, true]
       return questions.map(item => {
         switch(item.type) {
           case 'text':
             return item.right.toLowerCase() === userAnswers.results[curr++].toLowerCase();
           case 'singleChoise': 
-            return ""+item.right == userAnswers.results[curr++];
+            return item.right === userAnswers.results[curr++];
           case 'multiChoise':
-            return item.right.every(item => userAnswers.results[curr++].includes(item))
+            curr++;
+            return item.right.every(item => userAnswers.results[curr-1].includes(item));
         }
       });
     }
@@ -84,8 +80,8 @@ const generateQuiz = () => {
           // сохраняем результаты в localStorage
           User.result = userAnswers;
           // перенаправляем на страницу результатов
-         /*  document.location.href = 
-            `/result.html?name=${User.name}&group=${User.group}&id=${id}`  */
+          document.location.href = 
+            `/result.html?name=${User.name}&group=${User.group}&id=${id}` 
         });
       }
       
