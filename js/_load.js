@@ -6,7 +6,7 @@ if (location.pathname.startsWith('/index') || location.pathname === '/') {
 }
 
 if (location.hash && location.pathname.includes('quiz') && User.isAutorized()) {
-  getData.quiz('idd03', console.log);
+  //getData.quiz('idd03', console.log);
 } else {
   console.log('Перенаправляем на index.html');
 }

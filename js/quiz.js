@@ -32,20 +32,24 @@ const generateQuiz = () => {
           }
         });
       userAnswers.results.push(result);
-      console.log(userAnswers);
     }
 
+    const checkAnswers = () => {
+      let curr = 0;
+      return questions.map(item => ""+item.right === userAnswers.results[curr++]);
+    }
 
     const handleNext = () => {
       if (currentQuestion + 1 >= questions.length) {
         nextBtn.textContent = 'Завершить';
         nextBtn.removeEventListener('click', handleNext);
         nextBtn.addEventListener('click', () => { 
+          userAnswers.resultMask = checkAnswers();
           User.result = userAnswers;
           //document.location.href = '/result.html' 
         });
       }
-      
+    
       renderQuestion(questions[currentQuestion++])
     }
 
