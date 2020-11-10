@@ -36,9 +36,13 @@ const generateQuiz = () => {
         .querySelectorAll(`input${questions[currentQuestion-1].type !== 'text' ? ':checked' : ''}`)
         // для каждого элемента
         .forEach(item => {
-          if (!isMulti)
+          if (!isMulti) {
             // присваиваем результату
-            result = item.value;
+            console.log( typeof(item.value) );
+            console.log(item.value instanceof String);
+            result =  +item.value; 
+            console.log(result);
+          }
           else {
             // пшим в массив
             result.push(item.value);
@@ -52,8 +56,19 @@ const generateQuiz = () => {
     const checkAnswers = () => {
       // индекс текущего элемента
       let curr = 0;
+      console.log(questions.map(item => item.right));
+      console.log(userAnswers.results);
       // делаем новый массив - маску ответов. Пример: [true, true, false, true]
-      return questions.map(item => ""+item.right === userAnswers.results[curr++]);
+      return questions.map(item => {
+        switch(item.type) {
+          case 'text':
+            return item.right.toLowerCase() === userAnswers.results[curr++].toLowerCase();
+          case 'singleChoise': 
+            return ""+item.right == userAnswers.results[curr++];
+          case 'multiChoise':
+            return item.right.every(item => userAnswers.results[curr++].includes(item))
+        }
+      });
     }
 
     // обрабатываем нажатие на следующий вопрос
@@ -69,8 +84,8 @@ const generateQuiz = () => {
           // сохраняем результаты в localStorage
           User.result = userAnswers;
           // перенаправляем на страницу результатов
-          document.location.href = 
-            `/result.html?name=${User.name}&group=${User.group}&id=${id}` 
+         /*  document.location.href = 
+            `/result.html?name=${User.name}&group=${User.group}&id=${id}`  */
         });
       }
       
