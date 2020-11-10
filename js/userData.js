@@ -23,6 +23,25 @@ const User = {
   },
   isAutorized() { 
     return this.name && this.group;
+  },
+
+  set result(res) {
+    res.name = this.name;
+    res.group = this.group;
+    // находим все результаты
+    const allRes = getLocalStorage('results');
+    let obj = allRes.find(item => 
+      item.id === res.id && 
+      item.name === this.name && 
+      item.group === this.group);
+    if (obj) {
+      obj.results = res.results;
+    } else {
+      allRes.push(res);
+    }
+
+    console.log(allRes);
+    setLocalStorage('results', allRes);
   }
 } 
 

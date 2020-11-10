@@ -16,8 +16,6 @@ const generateQuiz = () => {
 
     const userAnswers = {
       id: id,
-      name: User.name,
-      group: User.group,
       results: [],
     };
 
@@ -42,8 +40,10 @@ const generateQuiz = () => {
       if (currentQuestion + 1 >= questions.length) {
         nextBtn.textContent = 'Завершить';
         nextBtn.removeEventListener('click', handleNext);
-        // todo сохранить результаты в localstorage
-        //nextBtn.addEventListener('click', () => document.location.href = '/result.html');
+        nextBtn.addEventListener('click', () => { 
+          User.result = userAnswers;
+          //document.location.href = '/result.html' 
+        });
       }
       
       renderQuestion(questions[currentQuestion++])
