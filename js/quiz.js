@@ -46,7 +46,8 @@ const generateQuiz = () => {
         nextBtn.addEventListener('click', () => { 
           userAnswers.resultMask = checkAnswers();
           User.result = userAnswers;
-          //document.location.href = '/result.html' 
+          document.location.href = 
+            `/result.html?name=${User.name}&group=${User.group}&id=${id}` 
         });
       }
     
