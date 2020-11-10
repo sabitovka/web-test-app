@@ -1,5 +1,4 @@
-import { User } from './autorization.js'
-
+import  User  from './userData.js'
 import getData from './data.js'
 
 if (location.pathname.startsWith('/index') || location.pathname === '/') {

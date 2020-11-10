@@ -1,4 +1,5 @@
-import { User, handleAutorizeWindow, handleUserWindow } from './autorization.js';
+import { handleAutorizeWindow, handleUserWindow } from './autorization.js';
+import User from './userData.js';
 
 const generateHeader = () => {
   const headerHTML = `

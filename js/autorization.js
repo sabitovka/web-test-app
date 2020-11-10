@@ -1,29 +1,6 @@
-import cookieParser from './cookie.js'
+import User from './userData.js'
 
-export const User = {
-  nameData: cookieParser.getCookie('name'),
-  groupData: cookieParser.getCookie('group'),
-
-  get name() { return this.nameData },
-  get group() { return this.groupData }, 
-
-  set name(title) {
-    cookieParser.setCookie("name", title);
-    this.nameData = title;
-  },
-
-  set group(title) {
-    cookieParser.setCookie("group", title);
-    this.groupData = title;
-  },
-
-  toString() {
-    return this.name + " - " + this.group;
-  },
-  isAutorized() { 
-    return this.name && this.group;
-  }
-} 
+export const UserA = User;
 
 export const handleAutorizeWindow = () => {
   const loginWindow = document.querySelector(".login-window");
