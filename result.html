@@ -14,6 +14,7 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" defer></script>
   <script src="./js/index.js" defer type="module"></script>
 </head>
 
@@ -28,7 +29,9 @@
       <p>Правильных: <span class="res-span">6 из 20</span></p>
       <p>Бал: <span class="bal">1</span></p>
       <p>По системе ECTS: <span class="span-ects">30 (F)</span></p>
-      <p class="red-text center">График</p>
+      <div class="container row">
+        <canvas id="result-chart" class="col m1" width="400" height="400"></canvas>
+      </div>
     </div>
   </main>
 

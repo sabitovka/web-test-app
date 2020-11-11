@@ -9,6 +9,7 @@ const generateResults = () => {
     const resSpan = document.querySelector('.res-span');
     const bal = document.querySelector('.bal');
     const spanEcts = document.querySelector('.span-ects');
+    const canvas = document.getElementById('result-chart').getContext('2d');
 
     const res = User.loadResults(id);
 
@@ -17,6 +18,19 @@ const generateResults = () => {
     resSpan.textContent = res.resultMask.length;
     bal.textContent = 45;
     spanEcts.textContent = 2344;
+
+    new Chart(canvas, {
+      type: 'pie',
+      data: {
+        labels: ['Правильных', 'Неправильных'],
+        datasets: [{
+          label: 'some label?',
+          backgroundColor: ['green', 'darkred' ],
+          borderColor: 'black',
+          data: [5, 7]
+        }]
+      }
+    });
 
   }
   
