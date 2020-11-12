@@ -40,5 +40,15 @@ export const handleAutorizeWindow = () => {
 }
 
 export const handleUserWindow = () => {
-  document.querySelector('.user').textContent = User.toString();
+  const userProfile = document.querySelector('.user-profile');
+  const userName = document.querySelector('.user-name');
+  const userContainer = document.querySelector('.user-container');
+
+  const openUserWindow = () => {
+    userProfile.classList.remove('user-profile_hidden');
+    userName.classList.add('user-name_hidden');
+  }
+
+  userContainer.addEventListener('click', openUserWindow);
+  
 }
