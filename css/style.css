@@ -15,6 +15,29 @@
   margin-left: auto;
 }
 
+/* user-container */
+
+.user-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.user-name {
+  margin-left: 15px;
+  transition:  opacity .5s, visibility .5s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.user-name_hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/*  */
 .user {
   margin-left: auto;
   color: #49afa5;
