@@ -84,6 +84,7 @@
   opacity: 1;
   visibility: visible;
   transition: .5s opacity , .55s visibility;
+  z-index: 2;
 }
 
 .user-profile_hidden {

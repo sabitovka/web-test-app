@@ -72,6 +72,7 @@ const createUserCard = () => {
       <div class="divider"></div>
       <button class="user-profile__btn-exit btn brown right btn-small">Выйти</button>
     </div>
+    <div class="overlay hide"/>
   `
 
   document.body.insertAdjacentHTML('beforeend', cardHTML);

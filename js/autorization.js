@@ -43,12 +43,20 @@ export const handleUserWindow = () => {
   const userProfile = document.querySelector('.user-profile');
   const userName = document.querySelector('.user-name');
   const userContainer = document.querySelector('.user-container');
+  const overlay = document.querySelector(".overlay");
 
   const openUserWindow = () => {
     userProfile.classList.remove('user-profile_hidden');
     userName.classList.add('user-name_hidden');
+    overlay.classList.remove("hide");
+  }
+
+  const closeUserWindow = () => {
+    userProfile.classList.add('user-profile_hidden');
+    userName.classList.remove('user-name_hidden');
+    overlay.classList.add("hide");
   }
 
   userContainer.addEventListener('click', openUserWindow);
-  
+  overlay.addEventListener('click', closeUserWindow)
 }
