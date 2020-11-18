@@ -1,11 +1,12 @@
 import { getLocalStorage, setLocalStorage } from './storage.js';
 import cookieParser from './cookie.js'
+import { getSession, setSession } from './session.js'
 
 const User = {
   // имя пользователя
-  nameData: cookieParser.getCookie('name'),
+  nameData: getSession('name'),
   // группа пользователя
-  groupData: cookieParser.getCookie('group'),
+  groupData: getSession('group'),
 
   // геттеры
   get name() { return this.nameData },
@@ -14,13 +15,13 @@ const User = {
   // сеттеры
   set name(title) {
     // ставим в куки
-    cookieParser.setCookie("name", title);
+    setSession("name", title);
     this.nameData = title;
   },
 
   set group(title) {
     // ставим в куки
-    cookieParser.setCookie("group", title);
+    setSession("group", title);
     this.groupData = title;
   },
 
@@ -36,8 +37,6 @@ const User = {
   loadResults(id) {
     // находим все результаты
     const allRes = getLocalStorage('results');
-    console.log(allRes);
-    console.log(this.name, this.group, id);
     // находим результат с совпадающими name, group, id
     return allRes.find(item => 
       item.id === id && 
