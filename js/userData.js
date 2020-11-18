@@ -1,5 +1,5 @@
 import { getLocalStorage, setLocalStorage } from './storage.js';
-import cookieParser from './cookie.js'
+import { getScoreECTS, getScore, getScoreGov } from './resultParser.js'
 import { getSession, setSession } from './session.js'
 
 const User = {
@@ -65,6 +65,29 @@ const User = {
     }
     // записыаем в localstorage
     setLocalStorage('results', allRes);
+  },
+
+  async getResultsInfo() {
+    const allRes = getLocalStorage('results');
+    let obj = allRes.filter(item => 
+      item.name === this.name && 
+      item.group === this.group);
+
+    let score = 0;
+    obj.forEach(item => {
+      const righCount = item.resultMask.filter(i => i === true).length;
+      const allCount = item.resultMask.length;     
+      score += getScore(righCount, allCount);
+    });
+    score /= obj.length;
+
+    let resinfo = {
+      testsPassed: obj ? obj.length : '',
+      avgScore: score ? score : '',
+      ectsScore: score ? getScoreECTS(score) : "",
+      govScore: score ? getScoreGov(score): '',
+    }
+    return await Promise.resolve(resinfo);
   }
 } 
 

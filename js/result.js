@@ -14,7 +14,7 @@ const generateResults = () => {
 
     const res = User.loadResults(id);
 
-    let rightCount = res.resultMask.filter(item => true).length;
+    let rightCount = res.resultMask.filter(item => item === true).length;
     let allCount = res.resultMask.length;
     let score = getScore(rightCount, allCount);
 

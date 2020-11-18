@@ -17,3 +17,15 @@ export const getScoreECTS = (value) => {
 }
 
 export const getScore = (rightCount, allCount) => rightCount / allCount * 100;
+
+export const getScoreGov = (value) => {
+  if (value <= 59) {
+    return "Неудовлетворительно"
+  } else if (value <= 74) {
+    return "Удовлетворительно"
+  } else if (value <= 89) {
+    return "Хорошо"
+  } else if (value <= 100) {
+    return "Отлично"
+  }
+}
