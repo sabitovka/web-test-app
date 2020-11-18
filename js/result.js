@@ -11,8 +11,23 @@ const generateResults = () => {
     const bal = document.querySelector('.bal');
     const spanEcts = document.querySelector('.span-ects');
     const canvas = document.getElementById('result-chart').getContext('2d');
+    const header = document.querySelector('h3');
+    const resultWrapper = document.querySelector('.result-wrapper');
+
+    if (!User.isAutorized()) {
+      resultWrapper.style.display = 'none';
+      alert("Выполните вход");
+      location.href = "/"
+      return;
+    }
 
     const res = User.loadResults(id);
+
+    if (!res) {
+      header.textContent = "Не найдено результатов";
+      resultWrapper.style.display = 'none';
+      return;
+    }
 
     let rightCount = res.resultMask.filter(item => item === true).length;
     let allCount = res.resultMask.length;

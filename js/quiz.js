@@ -149,9 +149,13 @@ const generateQuiz = () => {
   }
 
   // если есть хэш, путь включает quiz b пользователь авторизован - отображаем тест
-  if (location.hash && location.pathname.includes('quiz') && User.isAutorized()) {
-    getData.quiz(location.hash.substr(1), handleQuiz);
-  }
+  if (location.hash && location.pathname.includes('quiz')) 
+    if (User.isAutorized()) 
+      getData.quiz(location.hash.substr(1), handleQuiz);
+    else {
+      alert('Выполните вход');
+      location.href = '/'
+    }
   // todo иначе переслать на index.html
 
 }
