@@ -1,5 +1,7 @@
-import { isAutorized, handleAutorizeWindow, handleUserWindow } from './autorization.js';
+import { handleAutorizeWindow, handleUserWindow } from './autorization.js';
+import User from './userData.js';
 
+// создаем header
 const generateHeader = () => {
   const headerHTML = `
     <header class="brown lighten-4">
@@ -8,11 +10,14 @@ const generateHeader = () => {
           <img src="img/logo.svg" alt="logo" class="logo-img">
         </a>
         ${
-          !isAutorized() ? 
+          !User.isAutorized() ? 
         `<button class="signin-btn btn btn-small brown">
           Войти
         </button>` :
-        `<span class="user"></span>`
+        `<div class="user-container">
+          <img src="./img/user.svg" alt="user" width="30" height="30">
+          <span class="user-name">${User.name}</span>
+        </div>`
         }
       </div>
     </header>
@@ -20,17 +25,19 @@ const generateHeader = () => {
 
   document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
-  if (!isAutorized()) {
+  // если пользователь не авторизован - создать окно входа
+  if (!User.isAutorized()) {
     createLoginWindow();
     handleAutorizeWindow();
   } else {
+    // иначе сделать его карточку
+    createUserCard();
     handleUserWindow();
   }
 }
 
+// создаем окно входа
 const createLoginWindow = () => {
-  const signinBtn = document.querySelector('.signin-btn');
-
   const loginCardHTML = `
   <div class="login-window card-panel hide">
     <form class="login-window__form" action="/">
@@ -51,6 +58,24 @@ const createLoginWindow = () => {
   `
 
   document.body.insertAdjacentHTML('beforeend', loginCardHTML);
+}
+
+const createUserCard = () => {
+  const cardHTML = `
+    <div class="user-profile card user-profile_hidden">
+      <div class="user-profile__name center">Карим Сабитов</div>
+      <div class="user-profile__group center">ПКС-15</div>
+      <div class="user-profile__test-passed">Пройдено тестов: <span class="user-profile__test-passed-span">6</span></div>
+      <div class="user-profile__avg-score">Средний бал: <span class="user-profile__avg-score-span">6</span></div>
+      <div class="user-profile__avg-score-ects">По ECTS: <span class="user-profile__avg-score-ects-span">A</span></div>
+      <div class="user-profile__avg-score-gov">По гос. шкале: <span class="user-profile__avg-score-gov-span">хорошо</span></div>
+      <div class="divider"></div>
+      <button class="user-profile__btn-exit btn brown right btn-small">Выйти</button>
+    </div>
+    <div class="overlay hide"/>
+  `
+
+  document.body.insertAdjacentHTML('beforeend', cardHTML);
 }
 
 export default generateHeader;

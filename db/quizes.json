@@ -7,8 +7,8 @@
     {
       "title": "Начнём с простого: что такое Java?",
       "type": "singleChoise",
-      "right": 3,
-      "img": "",
+      "right": 2,
+      "img": "https://www.ikea.com/ru/ru/images/products/fridene-kartina-cvetok__0731986_PE738542_S5.JPG",
       "variants": [
         "Мотоцикл",
         "Остров",
@@ -17,15 +17,15 @@
       ]
     },
     {
-      "title": "Введите правильный вариант",
+      "title": "Какая популярная игра написана на Java?",
       "type": "text",
-      "right": "hello",
+      "right": "minecraft",
       "img": ""
     },
     {
       "title": "Что будет в результате выполнения операции 2 + 2 == 5 && 12 / 4 == 3 || 2 == 5 % 3",
       "type": "singleChoise",
-      "right": 3,
+      "right": 1,
       "img": "",
       "variants": [
         "true",	
@@ -35,9 +35,9 @@
       ]
     },
     {
-      "title": "Начнём с простого: что такое Java?",
+      "title": "Как правильно объявлять массивы?",
       "type": "multiChoise",
-      "right": 3,
+      "right": [ 2, 5, 4],
       "img": "",
       "variants": [
         "int[] array = new int[];",

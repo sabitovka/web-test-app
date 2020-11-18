@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foo.bar - Сайт Тестирования</title>
+  <title>Список тестов</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -13,26 +13,20 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="./js/index.js" defer type="module"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="./js/admin__allquiz.js" defer type="module"></script>
 </head>
 
 <body class="grey lighten-4 brown-text text-darken-5">
   <main>
-    <div class="container">
-      <h4 class="quiz-title center"></h4>
-      <div class="divider"></div>
-      <!-- Вопросы -->
-      <div class="quiz row">
-        <h5 class="question-title center"></h5>
-        <div class="question-placeholder col s10 m6 offset-s1 offset-m3">
-        </div>
-      </div>
-      <div class="quiz-buttons center row">
-        <button class="prev-btn btn hide">Назад</button>
-        <a class="next-btn btn">Далее</a>
-      </div>
-    </div>
+    <h5>Тесты</h5>
+    <table class="table-quiz striped">
+      <tr>
+        <th>Название</th>
+        <th>Вопросов</th>
+        <th></th>
+      </tr>
+    </table>
   </main>
 
 </body>
