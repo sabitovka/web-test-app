@@ -1,4 +1,5 @@
 import User from './userData.js'
+import { getScoreECTS, getScore } from './resultParser.js'
 
 const generateResults = () => {
   
@@ -13,11 +14,15 @@ const generateResults = () => {
 
     const res = User.loadResults(id);
 
+    let rightCount = res.resultMask.filter(item => true).length;
+    let allCount = res.resultMask.length;
+    let score = getScore(rightCount, allCount);
+
     nameSpan.textContent = User.name;
     groupSpan.textContent = User.group;
-    resSpan.textContent = res.resultMask.length;
-    bal.textContent = 45;
-    spanEcts.textContent = 2344;
+    resSpan.textContent = `${rightCount}/${allCount}`;
+    bal.textContent = score;
+    spanEcts.textContent = getScoreECTS(score);
 
     new Chart(canvas, {
       type: 'pie',
@@ -27,7 +32,7 @@ const generateResults = () => {
           label: 'some label?',
           backgroundColor: ['green', 'darkred' ],
           borderColor: 'black',
-          data: [5, 7]
+          data: [rightCount, allCount-rightCount]
         }]
       }
     });

@@ -81,7 +81,7 @@ const generateQuiz = () => {
           User.result = userAnswers;
           // перенаправляем на страницу результатов
           document.location.href = 
-            `/result.html?name=${User.name}&group=${User.group}&id=${id}` 
+            `/result.html#${id}` 
         });
       }
       

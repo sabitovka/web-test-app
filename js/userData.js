@@ -36,6 +36,8 @@ const User = {
   loadResults(id) {
     // находим все результаты
     const allRes = getLocalStorage('results');
+    console.log(allRes);
+    console.log(this.name, this.group, id);
     // находим результат с совпадающими name, group, id
     return allRes.find(item => 
       item.id === id && 
