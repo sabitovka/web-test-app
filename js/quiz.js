@@ -3,6 +3,8 @@ import getData from './data.js';
 
 const generateQuiz = () => {
 
+  
+
   // функция обработки всего теста
   const handleQuiz = ({ id, title, questions }) => {
 
@@ -149,10 +151,14 @@ const generateQuiz = () => {
   }
 
   // если есть хэш, путь включает quiz b пользователь авторизован - отображаем тест
-  if (location.hash && location.pathname.includes('quiz') && User.isAutorized()) {
-    getData.quiz(location.hash.substr(1), handleQuiz);
-  }
-  // todo иначе переслать на index.html
+  if (location.hash && location.pathname.includes('quiz'))
+
+    if(User.isAutorized()) 
+      getData.quiz(location.hash.substr(1), handleQuiz);
+    else {
+      alert("Вы должны выполнить вход");
+      location.href = "/"; // TODO с action=login
+    }
 
 }
 

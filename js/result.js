@@ -40,9 +40,12 @@ const generateResults = () => {
   }
   
   if (location.href.includes('result')) {
-    const id = location.hash.slice(1);      
-
-    renderResult(id);
+    if (User.isAutorized()) {
+      const id = location.hash.slice(1);      
+      renderResult(id);
+    } else {
+      location.href = '/';
+    }
   }  
 
 }
