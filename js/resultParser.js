@@ -16,7 +16,7 @@ export const getScoreECTS = (value) => {
   }
 }
 
-export const getScore = (rightCount, allCount) => rightCount / allCount * 100;
+export const getScore = (rightCount, allCount) => (Math.floor(rightCount / allCount * 100));
 
 export const getScoreGov = (value) => {
   if (value <= 59) {
