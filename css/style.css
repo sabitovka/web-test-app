@@ -16,9 +16,29 @@ body {
   padding: 11px;
 }
 
+.user-container {
+  position: relative;
+  width: 100%;
+}
+
+.user-head {
+  background: #FFFFFF;
+  border: 1px solid #CFCFCF;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 8px;
+  color: rgba(219, 123, 19, 0.85);
+}
+
+.user-name {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+}
+
 .btn {
   background: rgba(250, 140, 22, 0.75);
-  border-radius: 11px;
+  border-radius: 6px;
 }
 
 .signin-btn {
@@ -33,6 +53,10 @@ body {
   margin-top: 75px;
   margin-bottom: 40px;
   font-weight: normal;
+}
+
+.card {
+  z-index: 1;
 }
 
 .card-footer a {
@@ -228,12 +252,12 @@ body {
   cursor: pointer;
 }
 
-.user-name {
+/* .user-name {
   margin-left: 15px;
   transition:  opacity .5s, visibility .5s;
   opacity: 1;
   visibility: visible;
-}
+} */
 
 .user-name_hidden {
   opacity: 0;
