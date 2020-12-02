@@ -34,16 +34,6 @@ const User = {
     return this.name && this.group;
   },
 
-  loadResults(id) {
-    // находим все результаты
-    const allRes = getLocalStorage('results');
-    // находим результат с совпадающими name, group, id
-    return allRes.find(item => 
-      item.id === id && 
-      item.name === this.name && 
-      item.group === this.group);
-  },
-
   // записывает результат
   set result(res) {
     res.name = this.name;

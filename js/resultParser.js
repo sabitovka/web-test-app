@@ -1,3 +1,5 @@
+import { getLocalStorage } from './storage.js'
+
 export const getScoreECTS = (value) => {
   if (value <= 34) {
     return 'F';
@@ -28,4 +30,14 @@ export const getScoreGov = (value) => {
   } else if (value <= 100) {
     return "Отлично"
   }
+}
+
+export const loadResults = (name, group, id) => {
+  // находим все результаты
+  const allRes = getLocalStorage('results');
+  // находим результат с совпадающими name, group, id
+  return allRes.find(item => 
+    item.id === id && 
+    item.name === name && 
+    item.group === group);
 }

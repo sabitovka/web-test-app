@@ -11,4 +11,4 @@ generateHeader();
 generateQuizesPage();
 generateAboutPage();
 generateQuiz();
-// generateResults();
+generateResults();
