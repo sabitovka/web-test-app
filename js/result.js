@@ -5,7 +5,8 @@ const generateResults = () => {
   
   const renderResult = (name, group, id) => {
     const testTitle = document.querySelector('.test-title');
-    const scoreElem = document.querySelector('.score-result :first-child');
+    const scoreSpan = document.querySelector('.score-result :first-child')
+    const scoreElem = document.querySelector('.score-result :nth-child(2)');
     const ects = document.querySelector('.score-result :last-child');
     const resSpan = document.querySelector('.about-result b');
     const resultWrapper = document.querySelector('.result');
@@ -27,6 +28,7 @@ const generateResults = () => {
     let allCount = res.resultMask.length;
     let score = getScore(rightCount, allCount);
 
+    scoreSpan.textContent =  score <= 59 ? 'не' : '';
     resSpan.textContent = `${rightCount} из ${allCount}`;
     scoreElem.textContent = score;
     ects.textContent = getScoreECTS(score);
