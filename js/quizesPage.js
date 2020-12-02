@@ -2,32 +2,36 @@ import getData from './data.js'
 
 const generateQuizesPage = () => {
 
-  const quizes = document.querySelector('.quizes');
+  const testsWrapper = document.querySelector('.tests-wrapper');
 
   // генерация карточек с тестами
   const generateCard = (data) => {
-    quizes.textContent = '';
+    testsWrapper.textContent = '';
 
     let contentHTML = '';
 
     data.forEach(item => {
       contentHTML += `
-        <div class="col s12 m6">
-          <div class="card horizontal">
-            <div class="card-stacked">
-              <div class="card-content">
-                <p>${item.title}</p>
-              </div>
-              <div class="card-action">
-                <a href="/quiz.html#${item.id}">Начать тест</a>
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text text-truncate">
+                ${item.title}
               </div>
             </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html#${item.id}">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>${item.questions.length}</span></small>
+            </div>
+            <!-- .card-footer -->
           </div>
+          <!-- .card -->
         </div>
+        <!-- .col -->
       `
     })
 
-    quizes.insertAdjacentHTML('afterbegin', contentHTML);
+    testsWrapper.insertAdjacentHTML('afterbegin', contentHTML);
   }
 
   // если мы назодимя на глвной странице - отображаем список тестов
