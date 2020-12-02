@@ -3,22 +3,33 @@ import User from './userData.js';
 
 // создаем header
 const generateHeader = () => {
+
   const headerHTML = `
-    <header class="brown lighten-4">
-      <div class="header-wrapper container">
+    <header class="header">
+      <div class="header-wrapper container d-flex align-items-center">
         <a href="index.html" class="logo">
           <img src="img/logo.svg" alt="logo" class="logo-img">
         </a>
         ${
           !User.isAutorized() ? 
-        `<button class="signin-btn btn btn-small brown">
-          Войти
-        </button>` :
-        `<div class="user-container">
-          <img src="./img/user.svg" alt="user" width="30" height="30">
-          <span class="user-name">${User.name}</span>
+        `<button class="btn signin-btn ml-auto d-flex" data-toggle="modal" data-target="#user-login">
+            <span class="material-icons mr-1">fingerprint</span>
+            Войти
+          </button> 
+        ` : 
+        `<div class="user-container ml-auto col-3">
+          <div class="user-head d-flex align-items-center w-100 " data-toggle="modal" data-target="#user-info">
+            <span class="material-icons mr-2">
+              perm_identity
+            </span>
+            <span class="user-name text-truncate d-inline-block">${User.name}</span>
+            <span class="material-icons ml-auto">
+              keyboard_arrow_down
+            </span>
+          </div>
         </div>`
         }
+        
       </div>
     </header>
   `
@@ -39,22 +50,30 @@ const generateHeader = () => {
 // создаем окно входа
 const createLoginWindow = () => {
   const loginCardHTML = `
-  <div class="login-window card-panel hide">
-    <form class="login-window__form" action="/">
-      <div class="login-window__input-item">
-        <label for="login-window__input-name">Введите имя</label>
-        <input type="text" id="login-window__input-name">
-      </div>
-      <div class="login-window__input-item">
-        <label for="login-window__input-group">Введите группу</label>
-        <div>
-          <input type="text" id="login-window__input-group" class="inline">
-          <button type="submit" class="login-window__btn-submit btn btn-flat waves-effect waves-brown">Войти</button>
+    <div class="modal fade" id="user-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Авторизуйтесь для прохождения</h5>
+          </div>
+          <div class="modal-body">
+            <form name="user-login">
+              <div class="form-group">
+                <label for="user-name">Фамилия, Имя</label>
+                <input type="text" class="form-control" id="user-name">
+              </div>
+              <div class="form-group">
+                <label for="user-group">Группа</label>
+                <input type="text" class="form-control" id="user-group">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-login" data-dismiss="modal">Войти</button>
+          </div>
         </div>
       </div>
-    </form> 
-  </div>
-  <div class="overlay hide"/>
+    </div>
   `
 
   document.body.insertAdjacentHTML('beforeend', loginCardHTML);
@@ -62,17 +81,30 @@ const createLoginWindow = () => {
 
 const createUserCard = () => {
   const cardHTML = `
-    <div class="user-profile card user-profile_hidden">
-      <div class="user-profile__name center">Карим Сабитов</div>
-      <div class="user-profile__group center">ПКС-15</div>
-      <div class="user-profile__test-passed">Пройдено тестов: <span class="user-profile__test-passed-span">6</span></div>
-      <div class="user-profile__avg-score">Средний бал: <span class="user-profile__avg-score-span">6</span></div>
-      <div class="user-profile__avg-score-ects">По ECTS: <span class="user-profile__avg-score-ects-span">A</span></div>
-      <div class="user-profile__avg-score-gov">По гос. шкале: <span class="user-profile__avg-score-gov-span">хорошо</span></div>
-      <div class="divider"></div>
-      <button class="user-profile__btn-exit btn brown right btn-small">Выйти</button>
+    <div class="modal fade" id="user-info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">${User.name}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="user-details1 ">
+              <p class="us__group">Группа: <span></span></p>
+              <p class="us__tests-passed">Пройдено тестов: <span></span></p>
+              <p class="us__avg-score">Средний бал: <span></span></p>
+              <p class="us__avg-ects">По ECTS: <span></span></p>
+              <p class="us__avg-gov">По гос.шкале: <span></span></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-logout" data-dismiss="modal">Выйти</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="overlay hide"/>
   `
 
   document.body.insertAdjacentHTML('beforeend', cardHTML);

@@ -7,6 +7,6 @@ import generateResults from './result.js'
 import './_load.js'
 
 generateHeader();
-generateQuizesPage();
-generateQuiz();
-generateResults();
+// generateQuizesPage();
+// generateQuiz();
+// generateResults();
