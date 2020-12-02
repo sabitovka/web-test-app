@@ -1,18 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
-.header-wrapper {
-  display: flex;
-  align-items: center;
+body {
+  background-color: #fafafa;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-.logo {
-  margin: 10px;
+.header {
+  background: #FA8C16;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+  padding: 11px;
+}
+
+.user-container {
+  position: relative;
+  width: 100%;
+}
+
+.user-head {
+  background: #FFFFFF;
+  border: 1px solid #CFCFCF;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 8px;
+  color: rgba(219, 123, 19, 0.85);
+}
+
+.user-name {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.btn {
+  background: rgba(250, 140, 22, 0.75);
+  border-radius: 6px;
 }
 
 .signin-btn {
-  margin-left: auto;
+  color: #fff;
+  background: #DB7B13;
+  border: 1px solid rgba(187, 105, 16, 0.75);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+
+.tests-heading {
+  margin-top: 75px;
+  margin-bottom: 40px;
+  font-weight: normal;
+}
+
+.card {
+  z-index: 1;
+}
+
+.card-footer a {
+  color: #FA8C16;
+  text-decoration: none;
+}
+
+.dark {
+  background: #959595;
+  color: #fff;
+}
+
+.white {
+  background-color: white;
+  color: black
+}
+
+.about-test-section {
+  margin-top: 75px;
+}
+
+.greeting {
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+
+.test-name {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 41px;
+  margin-bottom: 35px;
+}
+
+.start-test-link {
+  padding: 5px;
+}
+
+.start-test-link button {
+  background: #FA8C16;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  padding: 12px 35px;
+  border: none;
+  margin-bottom: 35px;
+}
+
+.about-test {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.test-header {
+  padding: 15px 35px;
+}
+
+.questions-count {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.questions-count :first-child {
+  color: #5C5C5C;
+}
+
+.close {
+  font-size: 36px;
+  padding: 10px;
+}
+
+.question-legend {
+  margin-top: 80px;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 41px;  
+  margin-bottom: 50px;
+}
+
+.answer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.answer label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+	padding-left: 25px;
+	line-height: 18px;
+  user-select: none;
+  line-height: 28px;
+}
+
+.next-button {
+  background: #FA8C16;
+  border-radius: 11px;
+  border-color: none;
+}
+
+.next-button img {
+  transform: scale(0.7);
+}
+
+.btn-return img {
+  transform: rotate(180deg) scale(0.5);
+}
+
+.section-top {
+  padding: 25px 0 50px 0;
+  margin-bottom: 70px;
+}
+
+.result {
+  min-height: 100vh;
+}
+
+.test-title {
+  font-size: 30px;
+  line-height: 41px;
+}
+
+.about-result {
+  margin-top: 45px;
+}
+
+.score-result {
+  margin-bottom: 135px;
+}
+
+.result-link div {
+  margin-top: 15px;
+}
+
+.result-link a {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  height: 1.3em;
+  white-space: nowrap;
+}
+
+/*
+
+.answer input[type=radio] {
+  display: none;
+}
+
+.answer label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+	padding-left: 25px;
+	line-height: 18px;
+	user-select: none;
+}
+
+.answer label:before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 10px;
+  background: #fff;
+  border-radius: 50%
+}
+
+.answer input[type=radio]:checked + label:before {
+	background: url(https://snipp.ru/img/radio-2.png) 0 0 no-repeat;
+}
+
+.answer label:hover:before {
+	filter: brightness(120%);
+} */
+
+/* Disabled */
+.answer input[type=radio]:disabled + label:before {
+	filter: grayscale(100%);
 }
 
 /* user-container */
@@ -24,12 +252,12 @@
   cursor: pointer;
 }
 
-.user-name {
+/* .user-name {
   margin-left: 15px;
   transition:  opacity .5s, visibility .5s;
   opacity: 1;
   visibility: visible;
-}
+} */
 
 .user-name_hidden {
   opacity: 0;

@@ -7,27 +7,285 @@
   <title>Foo.bar - Сайт Тестирования</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="./js/index.js" defer type="module"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="grey lighten-4">
+<body>
+
+  <header class="header">
+    <div class="header-wrapper container d-flex align-items-center">
+      <a href="index.html" class="logo">
+        <img src="img/logo.svg" alt="logo" class="logo-img">
+      </a>
+      <button class="btn signin-btn ml-auto d-flex" data-toggle="modal" data-target="#user-login">
+        <span class="material-icons mr-1">fingerprint</span>
+        Войти
+      </button> 
+      
+      <div class="user-container ml-auto col-3">
+        <div class="user-head d-flex align-items-center w-100 " data-toggle="modal" data-target="#user-info">
+          <span class="material-icons mr-2">
+            perm_identity
+          </span>
+          <span class="user-name text-truncate d-inline-block">Карим Сабитов</span>
+          <span class="material-icons ml-auto">
+            keyboard_arrow_down
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <div class="row container">
-      <h3 class="center">Выберите тест</h2>
-        <div class="divider"></div>
-        <!-- Тесты -->
-        <div class="quizes">
+    <div class="container">
+      <h3 class="tests-heading">Выберите тест</h3>
+      <div class="tests-wrapper row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text text-truncate">
+                На сколько хорошо вы знаете Java?
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
         </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Основы программирования #1
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Основы программирования #2
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Системное программирование
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Разработка мобильных приложений
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Unity VR/AR
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Тест на принадлженость короновирусных антител Lorem Ipsum
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Разработка мобильных приложений
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Unity VR/AR
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Unity VR/AR
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="card-text overflow-hidden">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a href="about-test.html">НАЧАТЬ ТЕСТ</a>
+              <small>Вопросов: <span>10</span></small>
+            </div>
+            <!-- .card-footer -->
+          </div>
+          <!-- .card -->
+        </div>
+        <!-- .col -->
+
+      </div>
     </div>
   </main>
+
+  <div class="modal fade" id="user-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Авторизуйтесь для прохождения</h5>
+        </div>
+        <div class="modal-body">
+          <form name="user-login">
+            <div class="form-group">
+              <label for="user-name">Фамилия, Имя</label>
+              <input type="text" class="form-control" id="user-name">
+            </div>
+            <div class="form-group">
+              <label for="user-group">Группа</label>
+              <input type="text" class="form-control" id="user-group">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Войти</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="user-info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Карим Сабитов</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="user-details1 ">
+            <p class="us__group">Группа: <span>ПКС-15</span></p>
+            <p class="us__group">Пройдено тестов: <span>8</span></p>
+            <p class="us__group">Средний бал: <span>85</span></p>
+            <p class="us__group">По ECTS: <span>B</span></p>
+            <p class="us__group">По гос.шкале: <span>Хорошо</span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Выйти</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 </body>
 
