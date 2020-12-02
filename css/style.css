@@ -97,18 +97,12 @@ body {
 }
 
 .start-test-link {
-  padding: 5px;
-}
-
-.start-test-link button {
-  background: #FA8C16;
-  border-radius: 6px;
-  font-size: 18px;
-  line-height: 21px;
-  color: #FFFFFF;
   padding: 12px 35px;
   border: none;
   margin-bottom: 35px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
 }
 
 .about-test {
