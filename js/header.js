@@ -34,7 +34,8 @@ const generateHeader = () => {
     </header>
   `
 
-  document.body.insertAdjacentHTML('afterbegin', headerHTML);
+  if (!location.pathname.includes('/test'))
+    document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
   // если пользователь не авторизован - создать окно входа
   if (!User.isAutorized()) {

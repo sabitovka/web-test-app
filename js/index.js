@@ -10,5 +10,5 @@ import './_load.js'
 generateHeader();
 generateQuizesPage();
 generateAboutPage();
-// generateQuiz();
+generateQuiz();
 // generateResults();
