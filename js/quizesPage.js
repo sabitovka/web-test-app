@@ -20,7 +20,7 @@ const generateQuizesPage = () => {
               </div>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <a href="about-test.html#${item.id}">НАЧАТЬ ТЕСТ</a>
+              <a href="./about-test.html#${item.id}">НАЧАТЬ ТЕСТ</a>
               <small>Вопросов: <span>${item.questions.length}</span></small>
             </div>
             <!-- .card-footer -->
@@ -35,7 +35,8 @@ const generateQuizesPage = () => {
   }
 
   // если мы назодимя на глвной странице - отображаем список тестов
-  if (location.pathname.startsWith('/index') || location.pathname === '/') {
+  if (location.pathname.startsWith('/Web-Test-App/index') || location.pathname === '/Web-Test-App/' 
+  || location.pathname.startsWith('/index') || location.pathname === '/') {
     getData.quizesList(generateCard);
   }
 
