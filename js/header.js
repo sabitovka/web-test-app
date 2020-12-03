@@ -34,7 +34,7 @@ const generateHeader = () => {
     </header>
   `
 
-  if (!location.pathname.includes('/test'))
+  if (!location.pathname.startsWith('/Web-Test-App/test'))
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
   // если пользователь не авторизован - создать окно входа

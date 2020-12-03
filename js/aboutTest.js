@@ -14,7 +14,7 @@ const generateAboutPage = () => {
       console.log(greeting);
       greeting.classList.remove('d-none');
       greeting.querySelector('span').textContent = User.name;
-      startTestLink.setAttribute('href', `/test.html#${data.id}`)
+      startTestLink.setAttribute('href', `./test.html#${data.id}`)
     } else {
       startTestLink.setAttribute('data-toggle', 'modal');
       startTestLink.setAttribute('data-target', '#user-login');

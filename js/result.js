@@ -41,7 +41,7 @@ const generateResults = () => {
       resultLinkInput.select();
       document.execCommand("copy");
     })
-    btnTryAgain.setAttribute('href', `/test.html#${id}`)
+    btnTryAgain.setAttribute('href', `./test.html#${id}`)
     new Chart(canvas, {
       type: 'pie',
       data: {

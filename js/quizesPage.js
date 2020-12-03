@@ -20,7 +20,7 @@ const generateQuizesPage = () => {
               </div>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <a href="about-test.html#${item.id}">НАЧАТЬ ТЕСТ</a>
+              <a href="./about-test.html#${item.id}">НАЧАТЬ ТЕСТ</a>
               <small>Вопросов: <span>${item.questions.length}</span></small>
             </div>
             <!-- .card-footer -->
