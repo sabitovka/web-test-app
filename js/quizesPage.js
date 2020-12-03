@@ -35,7 +35,7 @@ const generateQuizesPage = () => {
   }
 
   // если мы назодимя на глвной странице - отображаем список тестов
-  if (location.pathname.startsWith('/index') || location.pathname === '/') {
+  if (location.pathname.includes('/index') || location.pathname === '/Web-Test-App/') {
     getData.quizesList(generateCard);
   }
 
