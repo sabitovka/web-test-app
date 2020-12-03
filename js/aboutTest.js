@@ -14,7 +14,7 @@ const generateAboutPage = () => {
       console.log(greeting);
       greeting.classList.remove('d-none');
       greeting.querySelector('span').textContent = User.name;
-      startTestLink.setAttribute('href', `/test.html#${data.id}`)
+      startTestLink.setAttribute('href', `./test.html#${data.id}`)
     } else {
       startTestLink.setAttribute('data-toggle', 'modal');
       startTestLink.setAttribute('data-target', '#user-login');
@@ -26,7 +26,7 @@ const generateAboutPage = () => {
   }
 
 
-  if (location.pathname.startsWith('/about-test')) {
+  if (location.pathname.startsWith('/Web-Test-App/about-test') || location.pathname.startsWith('/about-test')) {
     getData.quiz(location.hash.substr(1), loadAbout);
   }
 

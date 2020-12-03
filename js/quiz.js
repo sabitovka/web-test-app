@@ -80,7 +80,7 @@ const generateQuiz = () => {
           User.result = userAnswers;
           // перенаправляем на страницу результатов
           document.location.href = 
-            `/result.html?name=${User.name}&group=${User.group}&id=${id}` 
+            `./result.html?name=${User.name}&group=${User.group}&id=${id}` 
         });
         
       }
@@ -140,11 +140,11 @@ const generateQuiz = () => {
   }
 
   // если есть хэш, путь включает quiz b пользователь авторизован - отображаем тест
-  if (location.hash && location.pathname.startsWith('/test'))
+  if (location.hash && (location.pathname.startsWith('/Web-Test-App/test') || (location.pathname.startsWith('/test'))))
     if(User.isAutorized())   
       getData.quiz(location.hash.substr(1), handleQuiz);
     else {
-      location.href = "/";
+      location.href = "./";
     }
 
 }
