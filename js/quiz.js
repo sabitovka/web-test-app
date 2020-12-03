@@ -21,6 +21,7 @@ const generateQuiz = () => {
     // объект для хранения результатов
     const userAnswers = {
       id: id,
+      title,
       results: [],
     };
 

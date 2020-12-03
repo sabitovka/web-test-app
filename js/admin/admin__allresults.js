@@ -15,6 +15,7 @@ const generateTable = (data) => {
 
     rowsHTML += `
       <tr>
+      
         <td>${item.name}</td>
         <td>${item.group}</td>
         <td>${rightCount}  / ${allCount}</td>
