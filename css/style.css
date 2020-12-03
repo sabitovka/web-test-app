@@ -8,6 +8,7 @@
 body {
   background-color: #fafafa;
   font-family: 'Ubuntu', sans-serif;
+  min-height: 100vh;
 }
 
 .header {
@@ -203,6 +204,10 @@ body {
   width: 100%;
   height: 1.3em;
   white-space: nowrap;
+}
+
+.table {
+  margin-bottom: 0;
 }
 
 /*
