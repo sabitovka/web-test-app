@@ -140,7 +140,7 @@ const generateQuiz = () => {
   }
 
   // если есть хэш, путь включает quiz b пользователь авторизован - отображаем тест
-  if (location.hash && location.pathname.startsWith('/test'))
+  if (location.hash && (location.pathname.startsWith('/Web-Test-App/test') || (location.pathname.startsWith('/test'))))
     if(User.isAutorized())   
       getData.quiz(location.hash.substr(1), handleQuiz);
     else {

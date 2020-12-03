@@ -26,7 +26,7 @@ const generateAboutPage = () => {
   }
 
 
-  if (location.pathname.startsWith('/about-test')) {
+  if (location.pathname.startsWith('/Web-Test-App/about-test') || location.pathname.startsWith('/about-test')) {
     getData.quiz(location.hash.substr(1), loadAbout);
   }
 

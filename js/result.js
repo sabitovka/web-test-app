@@ -57,7 +57,7 @@ const generateResults = () => {
 
   }
   
-  if (location.search && location.pathname.startsWith('/result')) {
+  if (location.search && (location.pathname.startsWith('/Web-Test-App/result') || location.pathname.startsWith('/result'))) {
     const search = decodeURI(location.search).slice(1).split('&');
     const name = search[0].split('=')[1];
     const group = search[1].split('=')[1];
