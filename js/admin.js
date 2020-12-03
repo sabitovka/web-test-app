@@ -1,6 +1,47 @@
 import getData from './data.js'
 import { getLocalStorage } from './storage.js'
 import { getScoreECTS, getScore } from './resultParser.js'
+import { getSession, setSession } from './session.js'
+
+const cyrb53 = (str, seed = 0) => {
+  var h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+  for (var i = 0, ch; i < str.length; i++) {
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ h1>>>16, 2246822507) ^ Math.imul(h2 ^ h2>>>13, 3266489909);
+  h2 = Math.imul(h2 ^ h2>>>16, 2246822507) ^ Math.imul(h1 ^ h1>>>13, 3266489909);
+  return 4294967296 * (2097151 & h2) + (h1>>>0);
+};
+
+const hash32 = str => str.split('').reduce((prevHash, currVal) =>
+(((prevHash * 32) - prevHash) + currVal.charCodeAt(0))|0, 0);
+
+const adminData ={
+  username: 92668751,
+  password: 2058718939,
+  login(username, password) {
+    const usernameHash = hash32(username);
+    const 
+    passHash = hash32(password);
+    console.log(usernameHash, passHash);
+    if (this.username === usernameHash &&
+      this.password === passHash){
+        setSession('salt', 5)//Math.random());
+        setSession('hash', cyrb53(""+username+passHash))//Math.random());
+      }
+  }
+}
+
+const handleLogin = () => {
+  document.querySelector('.btn-admin-login').addEventListener('click', () => {
+console.log(1);
+    const username = document.forms[0].elements[0].value;
+    const password = document.forms[0].elements[1].value;
+    adminData.login(username, password);
+  });
+}
 
 const showTestsTable = (data) => {
 
@@ -63,4 +104,6 @@ if (location.pathname.includes('all-tests')) {
 } else if (location.hash && location.pathname.includes('students-result.html')) {
   const res = getLocalStorage('results');
   showResultsTable(res, location.hash.slice(1));
-}
+} //else if (location.pathname.includes === 'index') 
+  handleLogin();
+
