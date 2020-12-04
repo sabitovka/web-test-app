@@ -42,6 +42,10 @@ const adminData ={
     const crPass = ""+cyrb53(''+this.username+this.password, salt);
     console.log(crPass, hash, crPass === hash);
     return crPass === hash;
+  },
+  logout() {
+    sessionStorage.removeItem('salt');
+    sessionStorage.removeItem('hash');
   }
 }
 
@@ -62,7 +66,16 @@ const handleLogin = () => {
   });
 }
 
+const handleUnlogin = () => {
+  document.querySelector('.btn-logout').addEventListener('click', () => {
+    adminData.logout();
+    location.href = '../';
+  });
+}
+
 const showTestsTable = (data) => {
+
+  handleUnlogin();
 
   const tableQuiz = document.querySelector('.table-wrapper tbody');
 
@@ -83,6 +96,8 @@ const showTestsTable = (data) => {
 }
 
 const showResultsTable = (data, id) => {
+
+  handleUnlogin();
 
   const tableRes = document.querySelector('.table-wrapper tbody');
   const testResultSection = document.querySelector('.test-result-section span');
@@ -119,10 +134,19 @@ const showResultsTable = (data, id) => {
 }
 
 if (location.pathname.includes('all-tests')) {
-  getData.quizesList(showTestsTable);
+  if (adminData.isLoginned()) {
+    document.body.classList.remove("d-none");
+    getData.quizesList(showTestsTable);
+  }
+  else
+    location.href = '../';
 } else if (location.hash && location.pathname.includes('students-result.html')) {
-  const res = getLocalStorage('results');
-  showResultsTable(res, location.hash.slice(1));
+  if (adminData.isLoginned()) {
+    document.body.classList.remove("d-none");
+    const res = getLocalStorage('results');
+    showResultsTable(res, location.hash.slice(1));
+  } else
+    location.href = '../';
 } else if (location.pathname.includes('index') || location.pathname === '/admin/') 
   handleLogin();
 
