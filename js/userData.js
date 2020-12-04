@@ -73,7 +73,7 @@ const User = {
 
     let resinfo = {
       testsPassed: obj ? obj.length : '',
-      avgScore: score ? score : '',
+      avgScore: score ? Math.floor(score) : '',
       ectsScore: score ? getScoreECTS(score) : "",
       govScore: score ? getScoreGov(score): '',
     }

@@ -1,3 +1,4 @@
+import getData from './data.js';
 import { getScoreECTS, getScore, loadResults } from './resultParser.js'
 
 const generateResults = () => {
@@ -17,10 +18,7 @@ const generateResults = () => {
     const btnTryAgain = document.querySelector('.btn-try-again');
 
     const res = loadResults(name, group, id);
-
     if (!res) {
-      testTitle.textContent = "Не найдено результатов :(";
-      resultWrapper.style.display = 'none';
       return;
     }
 
@@ -28,6 +26,8 @@ const generateResults = () => {
     let allCount = res.resultMask.length;
     let score = getScore(rightCount, allCount);
 
+    testTitle.textContent = res.title;
+    resultWrapper.classList.remove('d-none');
     scoreSpan.textContent =  score <= 59 ? 'не' : '';
     resSpan.textContent = `${rightCount} из ${allCount}`;
     scoreElem.textContent = score;
@@ -64,7 +64,7 @@ const generateResults = () => {
     const id = search[2].split('=')[1];
     console.log(search, name, group, id);
     renderResult(name, group, id);
-  } 
+  }
 
 }
 

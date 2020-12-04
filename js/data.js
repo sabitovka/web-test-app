@@ -1,11 +1,11 @@
 const getData = {
   // ссылка на файл с вопросами
-  url: "db/quizes.json",
+  url: location.pathname.includes('admin') ? "../db/quizes.json" : "db/quizes.json" ,
   async getData(url) {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`);
+      throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
     }
     return await response.json();
   },
