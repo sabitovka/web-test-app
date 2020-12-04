@@ -20,26 +20,45 @@ const hash32 = str => str.split('').reduce((prevHash, currVal) =>
 
 const adminData ={
   username: 92668751,
-  password: 2058718939,
+  password: 92668751,
   login(username, password) {
     const usernameHash = hash32(username);
-    const 
-    passHash = hash32(password);
+    const passHash = hash32(password);
     console.log(usernameHash, passHash);
     if (this.username === usernameHash &&
       this.password === passHash){
         setSession('salt', 5)//Math.random());
-        setSession('hash', cyrb53(""+username+passHash))//Math.random());
+        setSession('hash', cyrb53(""+usernameHash+passHash, 5))//Math.random());
+        return true;
       }
+    return false;
+  },
+  isLoginned() {
+    const salt = getSession('salt');
+    const hash = getSession('hash');
+
+    if (!salt || !hash) return false;
+
+    const crPass = ""+cyrb53(''+this.username+this.password, salt);
+    console.log(crPass, hash, crPass === hash);
+    return crPass === hash;
   }
 }
 
 const handleLogin = () => {
-  document.querySelector('.btn-admin-login').addEventListener('click', () => {
-console.log(1);
+  if (adminData.isLoginned()) {
+    console.log('loggined');
+    location.href = './all-tests.html';
+    return
+  }
+  document.forms[0].classList.remove('d-none');
+  document.forms[0].addEventListener('submit', (e) => {
+    e.preventDefault();
     const username = document.forms[0].elements[0].value;
     const password = document.forms[0].elements[1].value;
-    adminData.login(username, password);
+    if (adminData.login(username, password)) {
+      location.reload();
+    }
   });
 }
 
@@ -104,6 +123,6 @@ if (location.pathname.includes('all-tests')) {
 } else if (location.hash && location.pathname.includes('students-result.html')) {
   const res = getLocalStorage('results');
   showResultsTable(res, location.hash.slice(1));
-} //else if (location.pathname.includes === 'index') 
+} else if (location.pathname.includes('index') || location.pathname === '/admin/') 
   handleLogin();
 
