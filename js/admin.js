@@ -147,6 +147,6 @@ if (location.pathname.includes('all-tests')) {
     showResultsTable(res, location.hash.slice(1));
   } else
     location.href = '../';
-} else if (location.pathname.includes('index') || location.pathname === '/admin/') 
+} else if (location.pathname.includes('index') || location.pathname === '/admin/' || location.pathname === '/Web-Test-App/admin/' ) 
   handleLogin();
 
