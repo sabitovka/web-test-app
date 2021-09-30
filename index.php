@@ -10,8 +10,8 @@ $urls = explode('/', $url);
 $router = $urls[0];
 $urlData = array_slice($urls, 1);
 
-include_once 'routes/' . $router . '.php';
-route($method, $urlData, $formData);
+include_once 'routes/' . $router . '.routes.php';
+echo route($method, $urlData, $formData);
 
 function getFormData($method) {
   if ($method === 'GET') return $_GET;
