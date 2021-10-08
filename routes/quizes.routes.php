@@ -16,7 +16,10 @@ function route($method, $urlData, $formData) {
     if (!count($urlData)) {
       return findAll();
     }
-
+    // GET /quizes/:id
+    if (count($urlData) && is_numeric($urlData[0])) {
+      return findById($urlData[0]);
+    }
   }
   return response(array('error' => 'Bad Request'), 400);
 }
@@ -46,6 +49,26 @@ function findAll() {
   }
   // если ничего не нашлось - 404
   return response(array('error' => 'Not Found'), 404);
+}
+
+/*
+  Находит тест по Id. Отображает полную информацию о тесте: название, описание, корличество вопросов, лимит времени 
+  GET /quizes/:id
+*/
+function findById($id) {
+  global $db;
+  // вытаскиваем тест по id
+  $stmt = Quiz::findById($db, $id);
+
+  // если что-то есть - достаем
+  if ($stmt->rowCount() > 0) {
+    // пользуемся магической функцией для автоматического формирования объекта
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Quiz');
+    // записываем результат
+    $res = $stmt->fetch(PDO::FETCH_CLASS);
+    return response(array('quize' => $res), 200);
+  }
+  return $id;
 }
 
 ?>

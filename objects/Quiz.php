@@ -21,7 +21,7 @@ class Quiz extends Model {
   */
   public static function findById($db, $id) {
     $query = 'SELECT * FROM ' . self::$table_name . ' WHERE quiz_id=' . $id;
-    return self::executeQuery($query);
+    return self::executeQuery($db, $query);
   }
 
 }
