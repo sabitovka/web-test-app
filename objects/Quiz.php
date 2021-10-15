@@ -11,7 +11,16 @@ class Quiz extends Model {
   */
   public static function findAll($db) {
     $query = 'SELECT * FROM v_allquizes';
-    return self::executeQuery($db, $query);
+    $stmt = self::executeQuery($db, $query);
+    // пользуемся магической функцией для автоматического формирования объекта
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Quiz');
+    // сюда будем записывать готовый объект
+    $quiz_array = array();
+    // пока что-то есть - достаем и пушим в массив
+    while($row = $stmt->fetch()) {
+      array_push($quiz_array, $row);
+    }
+    return $quiz_array;
   }
 
   /*
@@ -21,7 +30,10 @@ class Quiz extends Model {
   */
   public static function findById($db, $id) {
     $query = 'SELECT * FROM ' . self::$table_name . ' WHERE quiz_id=' . $id;
-    return self::executeQuery($db, $query);
+    $stmt = self::executeQuery($db, $query);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Quiz');    
+    // записываем результат
+    return $stmt->fetch();
   }
 
 }
