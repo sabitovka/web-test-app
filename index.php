@@ -1,4 +1,7 @@
 <?php 
+
+define('DEBUG', true);
+
 include_once 'headers/base.headers.php';
 
 $method = $_SERVER["REQUEST_METHOD"];
@@ -11,21 +14,29 @@ $urls = explode('/', $url);
 $router = $urls[0];
 $urlData = array_slice($urls, 1);
 
-if (file_exists('routes/' . $router . '.routes.php')) {
-  include_once 'routes/' . $router . '.routes.php';
-  if (function_exists('route')) {
-    echo route($method, $urlData, $formData);
-    exit;
+try {
+  if (file_exists('routes/' . $router . '.routes.php')) {
+    include_once 'routes/' . $router . '.routes.php';
+    if (function_exists('route')) {
+      echo route($method, $urlData, $formData);
+      exit;
+    }
   }
-}
 
-include_once 'utils/response.php';
-echo response(array('message' => 'Bad Request'), 400);
+  include_once 'utils/response.php';
+  echo response(array('message' => 'Bad Request. No Such Route'), 400);
+} catch (Throwable $e) {
+  if (constant('DEBUG')) {
+    echo $e;
+  }
+  include_once 'utils/response.php';
+  echo response(['message' => 'Произошла ошибка на сервере, повторите попытку поже', 'error' => $e->getMessage()]);
+}
 
 
 function getFormData($method) {
   if ($method === 'GET') return $_GET;
-  if ($method === 'POST') return $_POST;
+  if ($method === 'POST') return strlen(file_get_contents("php://input")) ? file_get_contents("php://input") : $_POST;
 
   // TODO 23.09.2021 8:56: Добавить методы put patch delete
 }
