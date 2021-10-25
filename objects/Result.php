@@ -38,9 +38,9 @@ class Result extends Model {
     $sql = 'INSERT INTO result (start_time, end_time, result_mask, quiz_id, user_id) 
       values (:start_time, :end_time, :mask, :quiz, :user)';
     $stmt = $db->prepare($sql);
-    $stmt->execute(['start_time' => $result->start_time,
-      'end_time' => $result->end_time,
-      'mask' => '$result->result_mask',
+    $stmt->execute(['start_time' => date('Y-m-d H:i:s', $result->start_time / 1000),
+      'end_time' => date('Y-m-d H:i:s', $result->end_time / 1000),
+      'mask' => $result->result_mask,
       'quiz' => $result->quiz->quiz_id,
       'user' => $result->user->user_id]);
     return $db->lastInsertId();

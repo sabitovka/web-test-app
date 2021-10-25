@@ -6,6 +6,7 @@ include_once 'config/database.php';
 include_once 'objects/Quiz.php';
 include_once 'objects/User.php';
 include_once 'objects/Result.php';
+include_once 'objects/Variant.php';
 
 $db = Database::getConnection();
 
@@ -45,8 +46,8 @@ function findById($id) {
     "quizid": 1,
     "userid": 2,
     "answers": [17,20,3,1, [2,3,1], 1, 2],
-    "start_time": "2021-10-18T09:56:00.548Z",
-    "end_time": "2021-10-18T10:15:00.548Z"
+    "start_time": 1635138013940,
+    "end_time": 1635138013940
 }
 @returns Объект резуьтата
 */
@@ -62,20 +63,39 @@ function saveResult($formData) {
     return response(array('message' => 'Тест не найден. Возможно он перемещен или удален'), 404);
   }
 
-  $start_time = strtotime($formData['start_time']);
-  $end_time = strtotime($formData['end_time']);
+  // делим на 1000 потому что js показывает количество МИЛЛИСЕКУНД - деалем СЕКУНДЫ
+  $start_time = $formData['start_time'];
+  $end_time = $formData['end_time'];
 
-  $diff = intval(($end_time - $start_time) / 60);
+  $diff = ($end_time - $start_time) / 1000;
   // TODO 19.10.2021: Если лимит в quiz = 0 - нет лимита и обрабатывать его не надо
-  $limit = $quiz->time_limit;
+  $limit = $quiz->time_limit * 60;
   if ($diff < 0 || $diff > $limit) {
     return response(array('message' => 'Время теста вышло'), 403);
   }
+
   // TODO 19.10.2021: проверять результат
+  $result_mask = '';
+  foreach($formData['answers'] as $variantId) {
+    // TODO 25.10.2021: обрабатывать множественный вариант ответа
+    if (is_array($variantId)) {
+      $is_correct = false;
+      /* foreach($variantId as $new_var_id) {
+        if (($variant = Variant::findById($db, $new_var_id)) && !$variant->right ) {
+          $is_correct = false;
+          break;
+        }
+      } */
+      $result_mask .= (int) $is_correct;
+      continue;
+    }
+    if ($variant = Variant::findById($db, $variantId))
+      $result_mask .= $variant->right;
+  }
 
   //// добавляем запись
   // создаем объект на основе переданных данных
-  $result = new Result($quiz, $user, date('Y-m-d', $start_time), date('Y-m-d', $end_time), $formData['answers'] );
+  $result = new Result($quiz, $user, $start_time, $end_time, $result_mask);
   // сохраняем и запомнаем id
   $resultId = Result::save($db, $result);
   $result->result_id = $resultId;
