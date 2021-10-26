@@ -1,6 +1,6 @@
 import getData from './data.js'
-import { getLocalStorage } from './storage.js'
-import { getScoreECTS, getScore } from './resultParser.js'
+import { getLocalStorage } from './utils/storage.js'
+import { getScoreECTS, getScore } from './utils/result-parser.js'
 import { getSession, setSession } from './session.js'
 
 const cyrb53 = (str, seed = 0) => {

@@ -1,4 +1,4 @@
-import User from './userData.js'
+import User from '../userData.js'
 
 // обабатываем окно авторизации
 export const handleAutorizeWindow = () => {

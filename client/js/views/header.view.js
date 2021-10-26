@@ -1,5 +1,5 @@
-import { handleAutorizeWindow, handleUserWindow } from './autorization.js';
-import User from './userData.js';
+import { handleAutorizeWindow, handleUserWindow } from '../utils/autorization.js';
+import User from '../userData.js';
 
 // создаем header
 const generateHeader = () => {

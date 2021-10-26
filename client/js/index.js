@@ -1,10 +1,10 @@
 'use strict'
 
-import generateHeader from "./header.js"
-import generateQuizesPage from './quizesPage.js'
-import generateAboutPage from './aboutTest.js'
-import generateQuiz from './quiz.js'
-import generateResults from './result.js'
+import generateHeader from "./views/header.view.js"
+import generateQuizesPage from './views/quizes.view.js'
+import generateAboutPage from './views/about.view.js'
+import generateQuiz from './views/quiz.view.js'
+import generateResults from './views/result.view.js'
 
 generateHeader();
 generateQuizesPage();

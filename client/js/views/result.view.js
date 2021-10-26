@@ -1,5 +1,5 @@
-import getData from './data.js';
-import { getScoreECTS, getScore, loadResults } from './resultParser.js'
+import getData from '../data.js';
+import { getScoreECTS, getScore, loadResults } from '../utils/result-parser.js'
 
 const generateResults = () => {
   

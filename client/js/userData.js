@@ -1,6 +1,6 @@
-import { getLocalStorage, setLocalStorage } from './storage.js';
-import { getScoreECTS, getScore, getScoreGov } from './resultParser.js'
-import { getSession, setSession } from './session.js'
+import { getLocalStorage, setLocalStorage } from './utils/storage.js';
+import { getScoreECTS, getScore, getScoreGov } from './utils/result-parser.js'
+import { getSession, setSession } from './utils/session.js'
 
 const User = {
   // имя пользователя

@@ -1,5 +1,5 @@
-import User from './userData.js' 
-import getData from './data.js';
+import User from '../userData.js' 
+import getData from '../data.js';
 
 const generateQuiz = () => {
 

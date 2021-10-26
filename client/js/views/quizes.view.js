@@ -1,4 +1,4 @@
-import getData from './data.js'
+import getData from '../data.js'
 
 const generateQuizesPage = () => {
 
