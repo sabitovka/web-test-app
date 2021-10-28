@@ -1,35 +1,28 @@
-import User from '../userData.js'
-import getData from '../data.js'
+export const AboutView = (model) => {
+  return `
+  <main>
+    <div class="container">
+      <section class="about-test-section mx-auto text-center col-8">
+        <div class="greeting d-none">Приветствую, <span></span>, пройдите тест</div>
+        <h2 class="test-name">${model.quiz.title}</h2>
+        <a href="#test?id=${model.quiz.quiz_id}" class="btn start-test-link">Начать тест</a>
+        <noscript>Похоже, Вы не включили JavaScript :(</noscript>
+      </section>
+      <article class="about-test">
+        ${model.quiz.descr}
+      </article>
+    </div>
+  </main>  
+  `
 
-const generateAboutPage = () => {
-
-  const loadAbout = (data) => {
-
-    const greeting = document.querySelector('.greeting');
-    const testName = document.querySelector('.test-name');
-    const startTestLink = document.querySelector('.start-test-link');
-    const aboutTest = document.querySelector('.about-test');
-
-    if (User.isAutorized()) {
-      console.log(greeting);
-      greeting.classList.remove('d-none');
-      greeting.querySelector('span').textContent = User.name;
-      startTestLink.setAttribute('href', `./test.html#${data.id}`)
-    } else {
-      startTestLink.setAttribute('data-toggle', 'modal');
-      startTestLink.setAttribute('data-target', '#user-login');
-    }
-
-    testName.textContent = data.title;
-    aboutTest.innerHTML = data.description;
-    
-  }
-
-
-  if (location.pathname.startsWith('/Web-Test-App/about-test') || location.pathname.startsWith('/about-test')) {
-    getData.quiz(location.hash.substr(1), loadAbout);
-  }
+  //   if (User.isAutorized()) {
+  //     console.log(greeting);
+  //     greeting.classList.remove('d-none');
+  //     greeting.querySelector('span').textContent = User.name;
+  //     startTestLink.setAttribute('href', `./test.html#${data.id}`)
+  //   } else {
+  //     startTestLink.setAttribute('data-toggle', 'modal');
+  //     startTestLink.setAttribute('data-target', '#user-login');
+  //   }
 
 }
-
-export default generateAboutPage;

@@ -2,7 +2,7 @@ import { handleAutorizeWindow, handleUserWindow } from '../utils/autorization.js
 import User from '../userData.js';
 
 // создаем header
-const generateHeader = () => {
+export const HeaderView = (model) => {
 
   const headerHTML = `
     <header class="header">
@@ -32,7 +32,9 @@ const generateHeader = () => {
         
       </div>
     </header>
-  `
+  `;
+  
+  return headerHTML;
 
   if (!location.pathname.startsWith('/Web-Test-App/test'))
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
@@ -110,5 +112,3 @@ const createUserCard = () => {
 
   document.body.insertAdjacentHTML('beforeend', cardHTML);
 }
-
-export default generateHeader;

@@ -1,13 +1,15 @@
 'use strict'
 
-import generateHeader from "./views/header.view.js"
-import generateQuizesPage from './views/quizes.view.js'
-import generateAboutPage from './views/about.view.js'
-import generateQuiz from './views/quiz.view.js'
-import generateResults from './views/result.view.js'
+import App from './lib/App.js';
+import Router from './lib/Router.js';
+import { Quizes } from './components/quizes.js';
+import { About } from './components/About.js';
 
-generateHeader();
-generateQuizesPage();
-generateAboutPage();
-generateQuiz();
-generateResults();
+const app = new App(document.querySelector('#app'));
+const router = new Router(app);
+
+app.addComponent(Quizes());
+app.addComponent(About());
+
+router.addRoute('quizes', /^#?\/?(index)?\/?$/);
+router.addRoute('about_quiz', /^#\/?about-test(\?(\S*=\w*)*&?)?$/);

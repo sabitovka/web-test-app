@@ -1,45 +1,34 @@
-import getData from '../data.js'
+export const QuizesView = (model) => {
 
-const generateQuizesPage = () => {
-
-  const testsWrapper = document.querySelector('.tests-wrapper');
-
-  // генерация карточек с тестами
-  const generateCard = (data) => {
-    testsWrapper.textContent = '';
-
-    let contentHTML = '';
-
-    data.forEach(item => {
-      contentHTML += `
-        <div class="col mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="card-text text-truncate">
-                ${item.title}
+  const testsWrapper = model.quizes.reduce((previos, current) => 
+        `<div class="col mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="card-text text-truncate">
+                  ${current.title}
+                </div>
               </div>
+              <div class="card-footer d-flex align-items-center justify-content-between">
+                <a href="#about-test?id=${current.id}">НАЧАТЬ ТЕСТ</a>
+                <small>Вопросов: <span>${current.questions_count}</span></small>
+              </div>
+              <!-- .card-footer -->
             </div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-              <a href="./about-test.html#${item.id}">НАЧАТЬ ТЕСТ</a>
-              <small>Вопросов: <span>${item.questions.length}</span></small>
-            </div>
-            <!-- .card-footer -->
+            <!-- .card -->
           </div>
-          <!-- .card -->
-        </div>
-        <!-- .col -->
-      `
-    })
+          <!-- .col -->
+        `, '');  
 
-    testsWrapper.insertAdjacentHTML('afterbegin', contentHTML);
-  }
-
-  // если мы назодимя на глвной странице - отображаем список тестов
-  if (location.pathname.startsWith('/Web-Test-App/index') || location.pathname === '/Web-Test-App/' 
-  || location.pathname.startsWith('/index') || location.pathname === '/') {
-    getData.quizesList(generateCard);
-  }
+  return (
+  `<main>
+    <div class="container">
+      <h3 class="tests-heading">Выберите тест</h3>
+      <noscript>Похоже, Вы не включили JavaScript :(</noscript>
+      <div class="tests-wrapper row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        ${testsWrapper}
+      </div>
+    </div>
+  </main>
+  `);
 
 }
-
-export default generateQuizesPage;
