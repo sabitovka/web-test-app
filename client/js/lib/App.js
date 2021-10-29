@@ -30,8 +30,11 @@ class App {
   }
   
   updateView() {
-    if (this.currentComponent) {
-      this.appElement.innerHTML = this.currentComponent.view(this.currentComponent.model)
+    if (this.currentComponent) {     
+      this.appElement.innerHTML = '';
+      for (let view of this.currentComponent.view(this.currentComponent.model)) {
+        this.appElement.innerHTML += view;
+      }
     }
   }
 

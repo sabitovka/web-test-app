@@ -1,4 +1,4 @@
-import { request, COMMON } from "../utils/http.js";
+import { request, url } from "../utils/http.js";
 import { AboutView } from "../views/about.view.js";
 import { HeaderView } from "../views/header.view.js";
 
@@ -8,15 +8,13 @@ export const About = () => {
     model: {
       quiz: []
     },
-    view(model) {
-      let content = '';
-      content += HeaderView();
-      content += AboutView(model);
-      return content;
+    *view(model) {
+      yield HeaderView();
+      yield AboutView(model);
     },
     async controller(model, params) {
       try {
-        model.quiz = await request(COMMON.backend_url + `webtest/api/quizes/${params?.id}`);
+        model.quiz = await request(url + `quizes/${params?.id}`);
       } catch (e) {
         model.error = e;
       }
