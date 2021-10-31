@@ -21,7 +21,8 @@ export const Test = () => {
         questions: questions,
         limit: quiz.time_limit,
         count: questions.length,
-        index: 1
+        index: 1,
+        answers: [],
       }
 
     //   quiz.questions = questions;
