@@ -23,6 +23,8 @@ export const Test = () => {
         count: questions.length,
         index: 1,
         answers: [],
+        start_time: new Date(),
+        quiz_id: params.id
       }
 
     //   quiz.questions = questions;

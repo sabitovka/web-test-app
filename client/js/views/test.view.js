@@ -1,3 +1,5 @@
+import { request, url } from '../utils/http.js';
+
 export const TestView = {
   Header(model) {
     return `
@@ -53,8 +55,7 @@ export const TestView = {
 
   Scripts(model) {
     this.model = model
-    const nextBtn = $('.next-button');
-    nextBtn.click(this._handleNextQuestion());
+    $('.next-button').click(this._handleNextQuestion());
 
     const deadline = model.question.remains ??= (new Date(Date.parse(new Date()) + model.question.limit * 60 * 1000));
     this._initializeTimer('timer', deadline)
@@ -68,8 +69,18 @@ export const TestView = {
       this.model.question.index++;
       this.model.question = this.model.question;
       if (this.model.question.index > this.model.question.count) {
-        document.location = './#';
-        return
+        const result = {
+          userid: 1,
+          quizid: this.model.question.quiz_id,
+          answers: this.model.question.answers,
+          start_time: this.model.question.start_time.getTime(),
+          end_time: new Date().getTime(),
+        };        
+        request(url+'results', 'POST', result)
+          .then(console.log)
+          .catch(console.error);
+        
+        //document.location = './#';
       }
     }
   },
