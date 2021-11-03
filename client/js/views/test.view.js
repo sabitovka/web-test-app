@@ -70,7 +70,7 @@ export const TestView = {
       this.model.question = this.model.question;
       if (this.model.question.index > this.model.question.count) {
         const result = {
-          userid: 1,
+          userid: this.model.user.userid,
           quizid: this.model.question.quiz_id,
           answers: this.model.question.answers,
           start_time: this.model.question.start_time.getTime(),

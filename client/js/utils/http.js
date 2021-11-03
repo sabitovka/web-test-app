@@ -17,8 +17,8 @@ export const request = async (url, method = 'GET', body = null, headers = {}) =>
 }
 
 export const COMMON = {
-  backend_url: 'http://127.0.0.1:80/',
-  api_url: 'api/',
+  backend_url: 'http://localhost:80/',
+  api_url: '/api/',
 }
 
-export const url = COMMON.backend_url + COMMON.api_url;
+export const url = /* COMMON.backend_url + */ COMMON.api_url;
