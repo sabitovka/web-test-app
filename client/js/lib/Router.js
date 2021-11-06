@@ -8,7 +8,9 @@ class Router {
     window.addEventListener('DOMContentLoaded', this.hashChange);
   }
 
-  addRoute(name, path) {
+  addRoute(name, path, options = {}) {
+    if (!options.own) 
+      path = `^#/?${path}${options.supportParams ? '(\\?(\\S*=\\w*)*&?)?$' : ''}`
     this.routes.push({
       name, path
     })

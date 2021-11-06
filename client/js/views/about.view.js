@@ -24,7 +24,7 @@ export const AboutView = {
     if (this.model.user?.userid) {
       $('.greeting span').removeClass('d-none');
       $('.greeting').text(this.model.user?.name);
-      $('.start-test-link').attr('href', `#test?id=${this.model.quiz.quiz_id}`)
+      $('.start-test-link').attr('href', `#/test?id=${this.model.quiz.quiz_id}`)
     } else {
       $('.start-test-link').attr('data-toggle', 'modal');
       $('.start-test-link').attr('data-target', '#user-login');

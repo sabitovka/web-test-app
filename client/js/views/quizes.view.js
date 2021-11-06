@@ -9,7 +9,7 @@ export const QuizesView = (model) => {
                 </div>
               </div>
               <div class="card-footer d-flex align-items-center justify-content-between">
-                <a href="#about-test?id=${current.id}">НАЧАТЬ ТЕСТ</a>
+                <a href="#/about-test?id=${current.id}">НАЧАТЬ ТЕСТ</a>
                 <small>Вопросов: <span>${current.questions_count}</span></small>
               </div>
               <!-- .card-footer -->

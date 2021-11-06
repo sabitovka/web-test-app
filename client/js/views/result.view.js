@@ -1,47 +1,73 @@
-import getData from '../data.js';
-import { getScoreECTS, getScore, loadResults } from '../utils/result-parser.js'
+import { getScore, getScoreECTS } from "../utils/result-parser.js";
 
-const generateResults = () => {
-  
-  
-  const renderResult = (name, group, id) => {
-    const testTitle = document.querySelector('.test-title');
-    const scoreSpan = document.querySelector('.score-result :first-child')
-    const scoreElem = document.querySelector('.score-result :nth-child(2)');
-    const ects = document.querySelector('.score-result :last-child');
-    const resSpan = document.querySelector('.about-result b');
-    const resultWrapper = document.querySelector('.result');
-    const canvas = document.getElementById('chart').getContext('2d');
-    const resultLink = document.querySelector('.result-link a');
-    const resultLinkButton = document.querySelector('.result-link button');
-    const resultLinkInput = document.querySelector('.result-link input');
-    const btnTryAgain = document.querySelector('.btn-try-again');
-
-    const res = loadResults(name, group, id);
-    if (!res) {
-      return;
-    }
-
-    let rightCount = res.resultMask.filter(item => item === true).length;
-    let allCount = res.resultMask.length;
+export const ResultView = {
+  View(model) {
+    this.model = model;
+    return `
+    <main>
+      <section class="section-top dark">
+        <div class="container h-100">
+          <a class="btn btn-return" href="#">
+            <img src="./img/arrow.svg" alt="">
+            <span>Назад</span>
+          </a>
+          <div class="test-title col-10 text-center mx-auto">
+            Не найдено результатов :(
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <section class="result d-none row">
+          <article class="result-article col-7">
+            <h4>Ваши результаты:</h4>
+            <p class="about-result">Вы правильно ответили на <b></b> вопросов.</p>
+            <p class="score-result">Вы <span></span> сдали тест, набрав <b></b> баллов. Ваша оценка по системе ECTS: <b></b> </p>
+            <div class="result-link">
+              Ваша постоянная сылка результата:
+              <div class="d-flex align-items-center justify-content-between">
+                <input type="text">
+                <a href="./"></a>
+                <button class="btn ml-auto">Копировать</button>
+              </div>
+            </div>
+          </article>
+          <div class="chart-wrapper col-4 mx-auto">
+            <canvas id="chart"></canvas> 
+            <!-- <img src="./img/chart.jpg" alt="chart"> -->
+            <a class="btn-try-again ml-auto mt-5 d-none">
+              <span class="material-icons mr-1">
+                autorenew
+              </span>
+              Пройти тест еще раз
+            </a>
+          </div>
+        </section> 
+      </div>
+      </div>
+    </main>
+    `
+  },
+  Script() {
+    if (this.model.loading) return
+    let rightCount = this.model.result?.result_mask?.split('')?.map(Number)?.filter(Boolean)?.length;
+    let allCount = this.model.result.result_mask.length;
     let score = getScore(rightCount, allCount);
 
-    testTitle.textContent = res.title;
-    resultWrapper.classList.remove('d-none');
-    scoreSpan.textContent =  score <= 59 ? 'не' : '';
-    resSpan.textContent = `${rightCount} из ${allCount}`;
-    scoreElem.textContent = score;
-    ects.textContent = getScoreECTS(score);
-
-    resultLink.setAttribute('href', location.href);
-    resultLink.textContent = location.href;
-    resultLinkInput.value = location.href;
-
-    resultLinkButton.addEventListener('click', () => {
-      resultLinkInput.select();
+    $('.test-title').text(this.model.result.quiz.title)
+    $('.score-result :first-child').text(score <= 59 ? 'не' : '')
+    $('.score-result :nth-child(2)').text(score)
+    $('.score-result :last-child').text(getScoreECTS(score))
+    $('.about-result b').text(`${rightCount} из ${allCount}`)
+    $('.result').removeClass('d-none')
+    $('.result-link a').attr('href', location.href).text(location.href)
+    $('.result-link input').val(location.href)
+    $('.result-link button').click(() => {
+      $('.result-link input').select();
       document.execCommand("copy");
     })
-    btnTryAgain.setAttribute('href', `./test.html#${id}`)
+    $('.btn-try-again').attr(this.model.result.quiz.title)
+
+    const canvas = $('#chart')[0].getContext('2d')
     new Chart(canvas, {
       type: 'pie',
       data: {
@@ -53,19 +79,6 @@ const generateResults = () => {
           data: [rightCount, allCount-rightCount]
         }]
       }
-    });
-
+    })
   }
-  
-  if (location.search && (location.pathname.startsWith('/Web-Test-App/result') || location.pathname.startsWith('/result'))) {
-    const search = decodeURI(location.search).slice(1).split('&');
-    const name = search[0].split('=')[1];
-    const group = search[1].split('=')[1];
-    const id = search[2].split('=')[1];
-    console.log(search, name, group, id);
-    renderResult(name, group, id);
-  }
-
 }
-
-export default generateResults;

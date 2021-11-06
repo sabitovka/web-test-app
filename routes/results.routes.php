@@ -49,7 +49,7 @@ function findById($id) {
     "start_time": 1635138013940,
     "end_time": 1635138013940
 }
-@returns Объект резуьтата
+@returns id резуьтата
 */
 // TODO 19.10.2021: Если такой результат существует - перезаписать
 function saveResult($formData) {
@@ -97,11 +97,13 @@ function saveResult($formData) {
   // создаем объект на основе переданных данных
   $result = new Result($quiz, $user, $start_time, $end_time, $result_mask);
   // сохраняем и запомнаем id
-  $resultId = Result::save($db, $result);
-  $result->result_id = $resultId;
+  if (!$formData['debug'])
+    $resultId = Result::save($db, $result);
+  else 
+    $resultId = 45;
   ////
   if (!$resultId) return response(['message' => 'Произошла непредвиденная ошибка']);
-  return response(['result' => $result], 200);
+  return response(['resultid' => $resultId], 200);
 }
 
 ?>

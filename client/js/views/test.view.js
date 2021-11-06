@@ -75,12 +75,14 @@ export const TestView = {
           answers: this.model.question.answers,
           start_time: this.model.question.start_time.getTime(),
           end_time: new Date().getTime(),
+          debug: true
         };        
         request(url+'results', 'POST', result)
-          .then(console.log)
+          .then(data => {
+            console.log(data);
+            document.location = `#/result?id=${data.resultid}`;
+          })
           .catch(console.error);
-        
-        //document.location = './#';
       }
     }
   },
