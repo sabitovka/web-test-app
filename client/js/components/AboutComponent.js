@@ -9,6 +9,7 @@ export const About = () => {
     model: {
       quiz: [],
       user: {},
+      loading: true
     },
     *view(model) {
       yield HeaderView.View(model);
@@ -25,6 +26,8 @@ export const About = () => {
         }
       } catch (e) {
         model.error = e;
+      } finally {
+        model.loading = false
       }
     }
   }

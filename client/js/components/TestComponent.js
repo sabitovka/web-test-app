@@ -8,6 +8,7 @@ export const Test = () => {
     model: {
       question: {},
       user: {},
+      loading: true
     },
     *view(model) {
       yield TestView.Header(model);
@@ -35,6 +36,8 @@ export const Test = () => {
         }
       } catch(e) {
         console.error(e);
+      } finally {
+        model.loading = false
       }
       
       

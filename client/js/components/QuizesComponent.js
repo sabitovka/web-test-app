@@ -8,7 +8,8 @@ export const Quizes = () => {
     name: 'quizes',
     model: {
       quizes: [],
-      user: {}
+      user: {},
+      loading: true
     },
     *view(model) {
       yield HeaderView.View(model);
@@ -21,6 +22,7 @@ export const Quizes = () => {
         groups: await request(url + 'users/groups'),
       }
       model.quizes = await request(url + 'quizes');
+      model.loading = false;
     }
   }
 }

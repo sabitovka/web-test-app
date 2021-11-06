@@ -2,6 +2,7 @@ import { getScore, getScoreECTS } from "../utils/result-parser.js";
 
 export const ResultView = {
   View(model) {
+    if (this.model.loading) return ''
     this.model = model;
     return `
     <main>

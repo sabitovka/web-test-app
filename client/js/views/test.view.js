@@ -2,6 +2,7 @@ import { request, url } from '../utils/http.js';
 
 export const TestView = {
   Header(model) {
+    if (model.loading) return ''
     return `
       <header class="test-header d-flex justify-content-between align-items-center">
         <div class="questions-count">
@@ -32,6 +33,7 @@ export const TestView = {
   },
 
   View(model) {
+    if (model.loading) return ''
     return `
       <main>
         <div class="container">
@@ -55,6 +57,7 @@ export const TestView = {
 
   Scripts(model) {
     this.model = model
+    if (this.model.loading) return
     $('.next-button').click(this._handleNextQuestion());
 
     const deadline = model.question.remains ??= (new Date(Date.parse(new Date()) + model.question.limit * 60 * 1000));

@@ -1,5 +1,7 @@
 export const QuizesView = (model) => {
 
+  if (model.loading) return ''
+
   const testsWrapper = model.quizes.reduce((previos, current) => 
         `<div class="col mb-4">
             <div class="card h-100">

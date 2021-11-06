@@ -7,6 +7,7 @@ export const HeaderView = {
   
   View(model) {
     this.model = model;
+    if (this.model.loading) return ''; 
     return `
       ${!this.model.user?.userid ? this._createLoginWindow() : this._createUserCard(model.user)}
       <header class="header">

@@ -2,6 +2,7 @@ export const AboutView = {
   
   View(model) {
     this.model = model;
+    if (model.loading) return ''
     return `
     <main>
       <div class="container">
