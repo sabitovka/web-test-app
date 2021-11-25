@@ -22,9 +22,13 @@ function route($method, $urlData, $formData) {
     }
   }
   if ($method === 'POST') {
-    // POST /users/
+    /* // POST /users/
     if (!count($urlData)) {
       return getUser(json_decode($formData, true));
+    } */
+    // POST /users/login/
+    if (count($urlData) === 1 && $urlData[0] === 'login') {
+      return loginUser(json_decode($formData, true));
     }
   }
 
@@ -61,7 +65,7 @@ function findAllGroups() {
   return response($groups, 200);
 }
 
-function getUser($formData) {
+function loginUser($formData) {
   global $db;
   
   $user = User::saveUser($db, $formData['username'], $formData['groupid']);

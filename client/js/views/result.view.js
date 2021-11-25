@@ -2,8 +2,8 @@ import { getScore, getScoreECTS } from "../utils/result-parser.js";
 
 export const ResultView = {
   View(model) {
-    if (this.model.loading) return ''
     this.model = model;
+    if (model.loading) return ''
     return `
     <main>
       <section class="section-top dark">
@@ -49,7 +49,7 @@ export const ResultView = {
     `
   },
   Script() {
-    if (this.model.loading) return
+    if (this.model?.loading) return
     let rightCount = this.model.result?.result_mask?.split('')?.map(Number)?.filter(Boolean)?.length;
     let allCount = this.model.result.result_mask.length;
     let score = getScore(rightCount, allCount);

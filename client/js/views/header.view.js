@@ -41,9 +41,11 @@ export const HeaderView = {
 
   Script() {
     $('.btn-login').click((e) => {
-      request(url + 'users', 'POST', { username: 'karim', groupid: 1 })
+      const username = $('#user-name').val();
+      const groupid = $('.form-select').val();
+      request(url + 'users/login', 'POST', { username, groupid })
         .then(data => {
-          login(data.userid, 'karim')
+          login(data.userid, username)
           this.model.user = this._updateUser();
         })
         .catch(console.error)

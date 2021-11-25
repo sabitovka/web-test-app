@@ -100,7 +100,7 @@ function saveResult($formData) {
   if (!$formData['debug'])
     $resultId = Result::save($db, $result);
   else 
-    $resultId = 45;
+    $resultId = 43;
   ////
   if (!$resultId) return response(['message' => 'Произошла непредвиденная ошибка']);
   return response(['resultid' => $resultId], 200);
