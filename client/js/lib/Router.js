@@ -9,6 +9,9 @@ class Router {
   }
 
   addRoute(name, path, options = {}) {
+    if (options.exact) {
+      path += '/?$';
+    }
     if (!options.own) 
       path = `^#/?${path}${options.supportParams ? '(\\?(\\S*=\\w*)*&?)?$' : ''}`
     this.routes.push({
