@@ -1,4 +1,5 @@
 import { request, url } from "../utils/http.js";
+import md5 from "../utils/md5.js";
 
 export const AdminComponent = () => {
   return {
@@ -21,7 +22,7 @@ export const AdminComponent = () => {
       $('.form-signin').submit((e) => {
         e.preventDefault();
         console.log(e, $('#inputPassword').val());
-        request(url + 'admin/login', 'POST', {password: $('#inputPassword').val()})
+        request(url + 'admin/login', 'POST', {password: md5($('#inputPassword').val())})
           .then(console.log)
           .catch(console.error);
       })
