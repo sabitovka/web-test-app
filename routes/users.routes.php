@@ -2,6 +2,7 @@
 
 include_once 'headers/base.headers.php';
 include_once 'utils/response.php';
+include_once 'utils/authorization.php';
 include_once 'config/database.php';
 include_once 'objects/User.php'; 
 
@@ -9,7 +10,7 @@ $db = Database::getConnection();
 
 function route($method, $urlData, $formData) {
   if ($method === 'GET') {
-    if (!count($urlData)) {
+    if (is_autorized() && !count($urlData)) {
       return findAll();
     }
     // GET /users/:id
