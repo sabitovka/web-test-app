@@ -2,6 +2,7 @@
 
 include_once 'headers/base.headers.php';
 include_once 'utils/response.php';
+include_once 'utils/authorization.php';
 include_once 'config/database.php';
 include_once 'objects/User.php'; 
 

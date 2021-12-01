@@ -2,7 +2,6 @@ export const AboutView = {
   
   View(model) {
     this.model = model;
-    if (model.loading) return ''
     return `
     <main>
       <div class="container">
@@ -21,7 +20,6 @@ export const AboutView = {
   },
 
   Script() {
-    console.log(1);
     if (this.model.user?.userid) {
       $('.greeting span').removeClass('d-none');
       $('.greeting').text(this.model.user?.name);

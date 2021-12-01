@@ -5,4 +5,6 @@ $dbname = 'web_test';
 $username = 'root';
 $password = 'admin';
 
+$adminPassword = 'admin';
+
 ?>

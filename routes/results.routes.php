@@ -12,6 +12,10 @@ $db = Database::getConnection();
 
 function route($method, $urlData, $formData) {
   if ($method === 'GET') {
+    // GET /results/quiz/:id
+    if (count($urlData) === 2 && $urlData[0] === 'quiz' && is_numeric($urlData[1])) {
+      return findAllByQuizId($urlData[1]);
+    }
     // GET /results/:id
     if (count($urlData) === 1 && is_numeric($urlData[0])) {
       return findById($urlData[0]);
@@ -25,6 +29,14 @@ function route($method, $urlData, $formData) {
   }
 
   return response(['message' => 'Bad Request'], 400);
+}
+
+function findAllByQuizId($id) {
+  global $db;
+
+  $res = Result::findAllByQuizId($db, $id);
+
+  return response($res, 200);
 }
 
 function findById($id) {

@@ -9,6 +9,7 @@ export const Result = () => {
       loading: true
     },
     *view(model) {
+      document.title = 'Foo.bar | Результаты теста'
       yield ResultView.View(model);
       ResultView.Script();
     },

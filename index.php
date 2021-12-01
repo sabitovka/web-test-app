@@ -3,6 +3,8 @@
 define('DEBUG', true);
 
 include_once 'headers/base.headers.php';
+include_once 'exceptions/UnauthorizedException.php';
+include_once 'exceptions/BadRequestException.php';
 
 $method = $_SERVER["REQUEST_METHOD"];
 $formData = getFormData($method);
@@ -15,17 +17,26 @@ $router = $urls[0];
 $urlData = array_slice($urls, 1);
 
 try {
-  if (file_exists('routes/' . $router . '.routes.php')) {
-    include_once 'routes/' . $router . '.routes.php';
-    if (function_exists('route')) {
-      echo route($method, $urlData, $formData);
-      exit;
-    }
+  if (!file_exists('routes/' . $router . '.routes.php')) {
+    throw new BadRequestException("No Such Route");
   }
 
+  include_once 'routes/' . $router . '.routes.php';
+  if (!function_exists('route')) {
+    throw new BadRequestException("No Such Route");
+  }
+  echo route($method, $urlData, $formData);
+
+} 
+catch (BadRequestException $e) {
   include_once 'utils/response.php';
-  echo response(array('message' => 'Bad Request. No Such Route'), 400);
-} catch (Throwable $e) {
+  echo response(['message' => 'Bad Request', 'error' => $e->getMessage()], 400);
+}
+catch (UnauthorizedException $e) {
+  include_once 'utils/response.php';
+  echo response(['message' => 'Ошибка авторизации', 'error' => $e->getMessage()], 401);
+}
+catch (Throwable $e) {
   if (constant('DEBUG')) {
     echo $e;
   }
