@@ -10,8 +10,7 @@ export const Result = () => {
     },
     *view(model) {
       document.title = 'Foo.bar | Результаты теста'
-      yield ResultView.View(model);
-      ResultView.Script();
+      yield *ResultView(model);
     },
     async controller(model,params) {
       model.result = await request(url+`/results/${params.id}`)  

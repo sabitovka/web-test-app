@@ -1,10 +1,8 @@
 import { getScore, getScoreECTS } from "../utils/result-parser.js";
 
-export const ResultView = {
-  View(model) {
-    this.model = model;
-    if (model.loading) return ''
-    return `
+export function *ResultView(model) {
+  if (model.result === {}) return;
+  yield `
     <main>
       <section class="section-top dark">
         <div class="container h-100">
@@ -46,40 +44,38 @@ export const ResultView = {
       </div>
       </div>
     </main>
-    `
-  },
-  Script() {
-    if (this.model?.loading) return
-    let rightCount = this.model.result?.result_mask?.split('')?.map(Number)?.filter(Boolean)?.length;
-    let allCount = this.model.result.result_mask.length;
-    let score = getScore(rightCount, allCount);
+  `
 
-    $('.test-title').text(this.model.result.quiz.title)
-    $('.score-result :first-child').text(score <= 59 ? 'не' : '')
-    $('.score-result :nth-child(2)').text(score)
-    $('.score-result :last-child').text(getScoreECTS(score))
-    $('.about-result b').text(`${rightCount} из ${allCount}`)
-    $('.result').removeClass('d-none')
-    $('.result-link a').attr('href', location.href).text(location.href)
-    $('.result-link input').val(location.href)
-    $('.result-link button').click(() => {
-      $('.result-link input').select();
-      document.execCommand("copy");
-    })
-    $('.btn-try-again').attr(this.model.result.quiz.title)
+  if (model?.loading) return
+  let rightCount = model.result?.result_mask?.split('')?.map(Number)?.filter(Boolean)?.length;
+  let allCount = model.result.result_mask.length;
+  let score = getScore(rightCount, allCount);
 
-    const canvas = $('#chart')[0].getContext('2d')
-    new Chart(canvas, {
-      type: 'pie',
-      data: {
-        labels: ['Правильных', 'Неправильных'],
-        datasets: [{
-          label: 'Результаты теста',
-          backgroundColor: ['green', 'darkred' ],
-          borderColor: 'black',
-          data: [rightCount, allCount-rightCount]
-        }]
-      }
-    })
-  }
+  $('.test-title').text(model.result.quiz.title)
+  $('.score-result :first-child').text(score <= 59 ? 'не' : '')
+  $('.score-result :nth-child(2)').text(score)
+  $('.score-result :last-child').text(getScoreECTS(score))
+  $('.about-result b').text(`${rightCount} из ${allCount}`)
+  $('.result').removeClass('d-none')
+  $('.result-link a').attr('href', location.href).text(location.href)
+  $('.result-link input').val(location.href)
+  $('.result-link button').click(() => {
+    $('.result-link input').select();
+    document.execCommand("copy");
+  })
+  $('.btn-try-again').attr(model.result.quiz.title)
+
+  const canvas = $('#chart')[0].getContext('2d')
+  new Chart(canvas, {
+    type: 'pie',
+    data: {
+      labels: ['Правильных', 'Неправильных'],
+      datasets: [{
+        label: 'Результаты теста',
+        backgroundColor: ['green', 'darkred' ],
+        borderColor: 'black',
+        data: [rightCount, allCount-rightCount]
+      }]
+    }
+  })
 }

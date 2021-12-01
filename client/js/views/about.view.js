@@ -1,8 +1,5 @@
-export const AboutView = {
-  
-  View(model) {
-    this.model = model;
-    return `
+export function *AboutView(model) {
+  yield `
     <main>
       <div class="container">
         <section class="about-test-section mx-auto text-center col-8">
@@ -16,18 +13,15 @@ export const AboutView = {
         </article>
       </div>
     </main>  
-    `
-  },
+  `
 
-  Script() {
-    if (this.model.user?.userid) {
-      $('.greeting span').removeClass('d-none');
-      $('.greeting').text(this.model.user?.name);
-      $('.start-test-link').attr('href', `#/test?id=${this.model.quiz.quiz_id}`)
-    } else {
-      $('.start-test-link').attr('data-toggle', 'modal');
-      $('.start-test-link').attr('data-target', '#user-login');
-    }
+  if (model.user?.userid) {
+    $('.greeting span').removeClass('d-none');
+    $('.greeting').text(model.user?.name);
+    $('.start-test-link').attr('href', `#/test?id=${model.quiz.quiz_id}`)
+  } else {
+    $('.start-test-link').attr('data-toggle', 'modal');
+    $('.start-test-link').attr('data-target', '#user-login');
   }
 
 }

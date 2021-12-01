@@ -15,10 +15,8 @@ export const About = () => {
       document.title = 'Foo.bar | Пройдите тест';
       if (model.loading)
         return;
-      yield HeaderView.View(model);
-      yield AboutView.View(model);
-      HeaderView.Script();
-      AboutView.Script();
+      yield *HeaderView(model);
+      yield *AboutView(model);
     },
     async controller(model, params) {
       try {

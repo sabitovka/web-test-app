@@ -13,9 +13,8 @@ export const Quizes = () => {
     },
     *view(model) {
       document.title = 'Foo.bar | Cайт тестирования'
-      yield HeaderView.View(model);
+      yield *HeaderView(model);
       yield QuizesView(model);
-      HeaderView.Script();
     },
     async controller(model, params) {
       model.user = {

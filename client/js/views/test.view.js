@@ -1,40 +1,24 @@
 import { request, url } from '../utils/http.js';
 
-export const TestView = {
-  Header(model) {
-    if (model.loading) return ''
-    return `
-      <header class="test-header d-flex justify-content-between align-items-center">
-        <div class="questions-count">
-          <span>${model.question.index}</span>/<span>${model.question.count ? model.question.count : ""}</span> 
-        </div>
-        <div id="timer" class="timer${model.question.limit ? '' : ' d-none'}">
-          <span>00</span>:<span>00</span>
-        </div>
-        <a href="#" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </a>
-      </header>
-    `
-  },
+export function *TestView (model) {
+  if (model.loading) return ''
+  yield `
+    <header class="test-header d-flex justify-content-between align-items-center">
+      <div class="questions-count">
+        <span>${model.question.index}</span>/<span>${model.question.count ? model.question.count : ""}</span> 
+      </div>
+      <div id="timer" class="timer${model.question.limit ? '' : ' d-none'}">
+        <span>00</span>:<span>00</span>
+      </div>
+      <a href="#" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+    </header>
+  `
+  const deadline = model.question.remains ??= (new Date(Date.parse(new Date()) + model.question.limit * 60 * 1000));
+  _initializeTimer('timer', deadline)
 
-  _QuestionsView(model) {
-    return model.question
-      .currentQuestion
-      ?.variants
-      ?.reduce((prev, cur, index) => 
-        prev += `
-          <div class="answer">
-            <input id="radio-${cur.id}" type="${model.question.quest_type === 'multiChoise' ? 
-              'checkbox' : 'radio'}" name="radio" value="${cur.id}">
-            <label for="radio-${cur.id}">${cur.title}</label>
-          </div>
-        `, '');
-  },
-
-  View(model) {
-    if (model.loading) return ''
-    return `
+  yield `
       <main>
         <div class="container">
           <div class="question-wrapper">
@@ -42,7 +26,7 @@ export const TestView = {
               <h2 class="question-legend col-10 mx-auto">${model.question.currentQuestion?.title}</h2>
               <div class="col-8 mx-auto">
                 <form action="#">
-                  ${this._QuestionsView(model)}
+                  ${_QuestionsView(model)}
                 </form>
                 <button type="button" class="next-button d-inline-flex">
                   <img src="./img/arrow.svg" alt="next">
@@ -53,68 +37,73 @@ export const TestView = {
         </div>
       </main>
       `
-  },
 
-  Scripts(model) {
-    this.model = model
-    if (this.model.loading) return
-    $('.next-button').click(this._handleNextQuestion());
+  $('.next-button').click(_handleNextQuestion(model));
 
-    const deadline = model.question.remains ??= (new Date(Date.parse(new Date()) + model.question.limit * 60 * 1000));
-    this._initializeTimer('timer', deadline)
-  },
+}
 
-  _handleNextQuestion() {
-    return (e) => {
-      const value = document.forms[0].querySelectorAll('input:checked')[0]?.value ?? 0
-      this.model.question.answers.push(Number(value));
-      this.model.question.currentQuestion = this.model.question.questions[this.model.question.index];
-      this.model.question.index++;
-      this.model.question = this.model.question;
-      if (this.model.question.index > this.model.question.count) {
-        const result = {
-          userid: this.model.user.userid,
-          quizid: this.model.question.quiz_id,
-          answers: this.model.question.answers,
-          start_time: this.model.question.start_time.getTime(),
-          end_time: new Date().getTime(),
-          debug: true
-        };        
-        request(url+'results', 'POST', result)
-          .then(data => {
-            console.log(data);
-            document.location = `#/result?id=${data.resultid}`;
-          })
-          .catch(console.error);
-      }
+const _QuestionsView = (model) => {
+  return model.question.currentQuestion
+    ?.variants
+    ?.reduce((prev, cur, index) => 
+      prev += `
+        <div class="answer">
+          <input id="radio-${cur.id}" type="${model.question.quest_type === 'multiChoise' ? 
+            'checkbox' : 'radio'}" name="radio" value="${cur.id}">
+          <label for="radio-${cur.id}">${cur.title}</label>
+        </div>
+      `, '');
+}
+
+const _handleNextQuestion = (model) => {
+  return (e) => {
+    const value = document.forms[0].querySelectorAll('input:checked')[0]?.value ?? 0
+    model.question.answers.push(Number(value));
+    model.question.currentQuestion = model.question.questions[model.question.index];
+    model.question.index++;
+    model.question = model.question;
+    if (model.question.index > model.question.count) {
+      const result = {
+        userid: model.user.userid,
+        quizid: model.question.quiz_id,
+        answers: model.question.answers,
+        start_time: model.question.start_time.getTime(),
+        end_time: new Date().getTime(),
+        debug: true
+      };        
+      request(url+'results', 'POST', result)
+        .then(data => {
+          console.log(data);
+          document.location = `#/result?id=${data.resultid}`;
+        })
+        .catch(console.error);
     }
-  },
-
-  _getTimeRemaining(endtime) {
-    var t = Date.parse(endtime) - Date.parse(new Date());
-    var seconds = Math.floor((t / 1000) % 60);
-    var minutes = Math.floor((t / 1000 / 60) % 60);
-    return {
-      'total': t,
-      'minutes': minutes,
-      'seconds': seconds
-    };
-  },
-
-  _initializeTimer(id, deadline) {
-    const minutesSpan = $('#'+id+' span:first-child');
-    const secondsSpan = $('#'+id+' span:last-child');
-    const updateClock = () => {
-      const t = this._getTimeRemaining(deadline);
-
-      minutesSpan.html(('0' + t.minutes).slice(-2));
-      secondsSpan.html(('0' + t.seconds).slice(-2));
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-      }
-    }
-    updateClock();
-    var timeinterval = setInterval(updateClock, 500);
   }
+}
 
+const _getTimeRemaining = (endtime) => {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  return {
+    'total': t,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+const _initializeTimer = (id, deadline) => {
+  const minutesSpan = $('#'+id+' span:first-child');
+  const secondsSpan = $('#'+id+' span:last-child');
+  const updateClock = () => {
+    const t = _getTimeRemaining(deadline);
+
+    minutesSpan.html(('0' + t.minutes).slice(-2));
+    secondsSpan.html(('0' + t.seconds).slice(-2));
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+  updateClock();
+  var timeinterval = setInterval(updateClock, 500);
 }
