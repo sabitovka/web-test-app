@@ -35,6 +35,7 @@ function findAllByQuizId($id) {
   global $db;
 
   $res = Result::findAllByQuizId($db, $id);
+  if (!$res) return response(['message' => 'Not Found'], 404);
 
   return response($res, 200);
 }

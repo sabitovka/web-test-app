@@ -27,6 +27,7 @@ class Result extends Model {
     $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Result');
 
     $quiz = Quiz::findById($db, $id);
+    if (!$quiz) return null;
     $quiz->results = [];
     while ($row = $stmt->fetch()) {
       $user = User::findById($db, $row->user);

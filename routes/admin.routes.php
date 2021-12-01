@@ -7,7 +7,8 @@ include_once 'config/core.php';
 
 function route($method, $urlData, $formData) {
   if ($method === 'GET') {
-    return is_autorized();
+    is_autorized();
+    return response(['message' => 'success'], 200);
   }
 
   if ($method === 'POST') {
