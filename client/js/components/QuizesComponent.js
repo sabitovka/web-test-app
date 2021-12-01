@@ -12,6 +12,7 @@ export const Quizes = () => {
       loading: true
     },
     *view(model) {
+      document.title = 'Foo.bar | Cайт тестирования'
       yield HeaderView.View(model);
       yield QuizesView(model);
       HeaderView.Script();

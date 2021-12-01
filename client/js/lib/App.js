@@ -31,9 +31,9 @@ class App {
   
   updateView() {
     if (this.currentComponent) {     
-      this.appElement.innerHTML = '';
+      this.appElement.innerHTML = "";
       for (let view of this.currentComponent.view(this.currentComponent.model)) {
-        this.appElement.innerHTML += view;
+        this.appElement.insertAdjacentHTML('beforeend', view);
       }
     }
   }

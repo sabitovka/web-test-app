@@ -11,6 +11,7 @@ export const Test = () => {
       loading: true
     },
     *view(model) {
+      document.title = 'Foo.bar | Тест';
       yield TestView.Header(model);
       yield TestView.View(model);
       TestView.Scripts(model);

@@ -1,13 +1,18 @@
 import { request, url } from "../utils/http.js";
 import md5 from "../utils/md5.js";
 
-export const AdminComponent = () => {
+export const AdminLoginComponent = () => {
   return {
     name: 'admin_login',
     model: {
       loading: true,
     },
     *view(model) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        document.location = '#/admin/panel';
+        return;
+      }
       yield `
         <div class="container">
           <form class="form-signin col-md-4 mx-auto text-center mt-5">
@@ -21,9 +26,11 @@ export const AdminComponent = () => {
       `;
       $('.form-signin').submit((e) => {
         e.preventDefault();
-        console.log(e, $('#inputPassword').val());
         request(url + 'admin/login', 'POST', {password: md5($('#inputPassword').val())})
-          .then(console.log)
+          .then(({ token }) => {
+            localStorage.setItem('token', token);
+            document.location = '#/admin/panel';
+          })
           .catch(console.error);
       })
     },

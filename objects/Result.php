@@ -19,6 +19,23 @@ class Result extends Model {
     $this->result_mask = $result_mask;
   }
 
+  public static function findAllByQuizId($db, $id) {
+    $sql = 'SELECT result_id, quiz_id as quiz, user_id as user, result_mask, start_time, end_time 
+      FROM result WHERE quiz_id = ?';
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$id]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Result');
+
+    $quiz = Quiz::findById($db, $id);
+    $quiz->results = [];
+    while ($row = $stmt->fetch()) {
+      $user = User::findById($db, $row->user);
+      $row->user = $user;
+      array_push($quiz->results, $row);
+    }
+    return $quiz;
+  }
+
   public static function findById($db, $id) {
     $sql = 'SELECT result_id, quiz_id as quiz, user_id as user, result_mask, start_time, end_time
       FROM result WHERE result_id=?';

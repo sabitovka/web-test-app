@@ -9,9 +9,12 @@ export const About = () => {
     model: {
       quiz: [],
       user: {},
-      loading: true
+      loading: true,
     },
     *view(model) {
+      document.title = 'Foo.bar | Пройдите тест';
+      if (model.loading)
+        return;
       yield HeaderView.View(model);
       yield AboutView.View(model);
       HeaderView.Script();

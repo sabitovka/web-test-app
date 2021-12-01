@@ -10,7 +10,7 @@ $db = Database::getConnection();
 
 function route($method, $urlData, $formData) {
   if ($method === 'GET') {
-    if (is_autorized() && !count($urlData)) {
+    if (!count($urlData)) {
       return findAll();
     }
     // GET /users/:id
