@@ -102,8 +102,8 @@ function saveResult($formData) {
       $result_mask .= (int) $is_correct;
       continue;
     }
-    if ($variant = Variant::findById($db, $variantId))
-      $result_mask .= $variant->right;
+
+    $result_mask .= $variantId === -1 ? 0 : Variant::findById($db, $variantId)->right;
   }
 
   //// добавляем запись

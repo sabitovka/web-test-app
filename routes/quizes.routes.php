@@ -6,7 +6,6 @@ include_once 'config/database.php';
 include_once 'objects/Quiz.php';
 include_once 'objects/Question.php';
 include_once 'objects/Variant.php';
-include_once 'utils/autorization.php';
 
 $db = Database::getConnection();
 

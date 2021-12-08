@@ -57,11 +57,10 @@ const _QuestionsView = (model) => {
 
 const _handleNextQuestion = (model) => {
   return (e) => {
-    const value = document.forms[0].querySelectorAll('input:checked')[0]?.value ?? 0
+    const value = document.forms[0].querySelectorAll('input:checked')[0]?.value ?? -1
     model.question.answers.push(Number(value));
     model.question.currentQuestion = model.question.questions[model.question.index];
-    model.question.index++;
-    model.question = model.question;
+    model.question.index++;    
     if (model.question.index > model.question.count) {
       const result = {
         userid: model.user.userid,
@@ -69,7 +68,7 @@ const _handleNextQuestion = (model) => {
         answers: model.question.answers,
         start_time: model.question.start_time.getTime(),
         end_time: new Date().getTime(),
-        debug: true
+        debug: false,
       };        
       request(url+'results', 'POST', result)
         .then(data => {
@@ -77,7 +76,9 @@ const _handleNextQuestion = (model) => {
           document.location = `#/result?id=${data.resultid}`;
         })
         .catch(console.error);
+      return
     }
+    model.question = model.question;
   }
 }
 

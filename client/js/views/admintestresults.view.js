@@ -39,13 +39,14 @@ export function *AdminTestResultsView(model) {
                 const allCount = item.result_mask.length;
                 const score = getScore(rightCount, allCount);
                 const scoreECTS = getScoreECTS(score);
-                return `
+                const timeElapsed = new Date(new Date(item.end_time) - new Date(item.start_time));
+                return _ += `
                   <tr>
-                    <td>${index++}</td>
+                    <td>${index+1}</td>
                     <td class="text-left">${item.user.name}</td>
                     <td>${item.user.group_name}</td>
                     <td>${rightCount}/${allCount}</td>
-                    <td></td>
+                    <td>${timeElapsed.getMinutes()}:${timeElapsed.getSeconds()}</td>
                     <td>${score}</td>
                     <td>${scoreECTS}</td>
                     <td><a href="#/result?id=${item.result_id}">Результат</a></td>
