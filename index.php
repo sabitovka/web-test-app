@@ -1,6 +1,6 @@
 <?php 
 
-define('DEBUG', true);
+define('DEBUG', false);
 
 include_once 'headers/base.headers.php';
 include_once 'exceptions/UnauthorizedException.php';
