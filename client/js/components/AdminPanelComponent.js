@@ -23,7 +23,7 @@ export const AdminPanelComponent = () => {
     async controller(model, params) {
       model.loading = true
       const token = localStorage.getItem('token');
-      model.quizes = await request('/api/quizes/', 'GET');
+      model.quizes = await request(url + 'quizes/', 'GET');
       model.loading = false;
     }
   }

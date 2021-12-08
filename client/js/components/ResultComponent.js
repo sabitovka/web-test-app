@@ -13,7 +13,7 @@ export const Result = () => {
       yield *ResultView(model);
     },
     async controller(model,params) {
-      model.result = await request(url+`/results/${params.id}`)  
+      model.result = await request(url+`results/${params.id}`)  
       model.loading = false;  
     }
   }

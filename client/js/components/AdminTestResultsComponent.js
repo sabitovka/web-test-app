@@ -21,7 +21,7 @@ export const AdminTestResultsComponent = () => {
     },
     async controller(model, params) { 
       model.loading = true
-      model.quiz_result = await request(`/api/results/quiz/${params.id}`, 'GET');
+      model.quiz_result = await request(url + `results/quiz/${params.id}`, 'GET');
       model.loading = false;
     }
   }
