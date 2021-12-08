@@ -1,0 +1,5 @@
+.vscode/
+
+#temp
+db/
+config/pdoconfig.php
